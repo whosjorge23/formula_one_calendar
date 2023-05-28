@@ -5,8 +5,8 @@ import 'package:http/http.dart' as http;
 
 import '../models/constructor_data.dart';
 
-class ConstructorsViewModel extends ChangeNotifier {
-  // List<Constructors> constructors = [];
+class ConstructorsViewModel {
+  List<Constructors> constructors = [];
 
   Future<void> fetchConstructors() async {
     final response = await http.get(Uri.parse('https://ergast.com/api/f1/2023/constructors.json'));
@@ -15,7 +15,6 @@ class ConstructorsViewModel extends ChangeNotifier {
       final jsonData = json.decode(response.body);
       final result = ConstructorData.fromJson(jsonData);
       constructors = result.MRData.constructorTable.constructors;
-      notifyListeners();
     } else {
       Future.delayed(const Duration(seconds: 10), fetchConstructors);
     }
