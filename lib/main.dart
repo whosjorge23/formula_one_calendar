@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:formula_one_calendar/credits_view.dart';
+import 'package:formula_one_calendar/views/credits_view.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 void main() {
