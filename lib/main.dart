@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:formula_one_calendar/credits_view.dart';
+import 'package:formula_one_calendar/views/constructors_view.dart';
+import 'package:formula_one_calendar/views/credits_view.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 void main() {
@@ -40,9 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Center(
       child: Text("Circuits Map"),
     ),
-    Center(
-      child: Text("Constructors"),
-    ),
+    ConstructorsView(),
     CreditsView(),
   ];
 
