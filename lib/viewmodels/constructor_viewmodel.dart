@@ -8,13 +8,14 @@ import '../models/constructor_data.dart';
 class ConstructorsViewModel {
   List<Constructors> constructors = [];
 
-  Future<void> fetchConstructors() async {
+  Future<List<Constructors>?> fetchConstructors() async {
     final response = await http.get(Uri.parse('https://ergast.com/api/f1/2023/constructors.json'));
 
     if (response.statusCode == 200) {
       final jsonData = json.decode(response.body);
       final result = ConstructorData.fromJson(jsonData);
       constructors = result.MRData.constructorTable.constructors;
+      return constructors;
     } else {
       Future.delayed(const Duration(seconds: 10), fetchConstructors);
     }
