@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:formula_one_calendar/views/constructors_view.dart';
 import 'package:formula_one_calendar/views/credits_view.dart';
+import 'package:formula_one_calendar/views/race_list_view.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 void main() {
@@ -35,9 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
   var _currentIndex = 0;
 
   List<Widget> pageList = [
-    Center(
-      child: Text("Races List"),
-    ),
+    RaceListView(),
     Center(
       child: Text("Circuits Map"),
     ),
