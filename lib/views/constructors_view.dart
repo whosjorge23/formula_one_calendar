@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:formula_one_calendar/models/constructor_data.dart';
 import 'package:formula_one_calendar/viewmodels/constructor_viewmodel.dart';
 
+import 'constructor_details_view.dart';
+
 class ConstructorsView extends StatefulWidget {
   @override
   State<ConstructorsView> createState() => _ConstructorsViewState();
@@ -59,12 +61,12 @@ class _ConstructorsViewState extends State<ConstructorsView> {
                     ),
                   ),
                   onTap: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => ConstructorDetailsView(constructor: constructor),
-                    //   ),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ConstructorDetailsView(constructor: constructor),
+                      ),
+                    );
                   },
                 );
               },
