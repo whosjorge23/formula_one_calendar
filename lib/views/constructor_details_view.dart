@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:formula_one_calendar/viewmodels/constructor_viewmodel.dart';
 
 import '../models/constructor_data.dart';
+import 'driver_view.dart';
 
 class ConstructorDetailsView extends StatefulWidget {
   final Constructors constructor;
@@ -52,23 +53,23 @@ class _ConstructorDetailsViewState extends State<ConstructorDetailsView> {
                 TextButton(
                   child: Text('${viewModel.constructorDrivers(widget.constructor.name)[0]}', style: Theme.of(context).textTheme.headline6),
                   onPressed: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => DriverDetailsView(selectedDriver: viewModel.constructorDriversID(constructorName: widget.constructor.name)[0]),
-                    //   ),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DriverDetailsView(selectedDriver: viewModel.constructorDriversID(widget.constructor.name)[0]),
+                      ),
+                    );
                   },
                 ),
                 TextButton(
                   child: Text('${viewModel.constructorDrivers(widget.constructor.name)[1]}', style: Theme.of(context).textTheme.headline6),
                   onPressed: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => DriverDetailsView(selectedDriver: viewModel.constructorDriversID(constructorName: widget.constructor.name)[1]),
-                    //   ),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DriverDetailsView(selectedDriver: viewModel.constructorDriversID(widget.constructor.name)[1]),
+                      ),
+                    );
                   },
                 ),
               ],
