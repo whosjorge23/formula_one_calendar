@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:formula_one_calendar/models/race_data.dart';
 import 'package:formula_one_calendar/viewmodels/race_viewmodel.dart';
+import 'package:formula_one_calendar/views/race_details.dart';
 
 class RaceListView extends StatefulWidget {
   @override
@@ -45,10 +46,10 @@ class _RaceListViewState extends State<RaceListView> {
               ],
             ),
             onTap: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => RaceDetailsView(race: race)),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => RaceDetailsView(race: race)),
+              );
             },
           );
         },
