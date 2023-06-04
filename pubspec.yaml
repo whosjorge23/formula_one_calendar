@@ -47,6 +47,8 @@ dependencies:
   flutter_map:
   latlong2:
 
+  blurry:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
