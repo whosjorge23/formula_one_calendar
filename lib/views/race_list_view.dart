@@ -19,7 +19,6 @@ class _RaceListViewState extends State<RaceListView> {
   }
 
   void fetchRaces() async {
-    // TODO: implement fetchRaces() function here.
     // Make sure to update the state once data is fetched.
     races = await viewModel.fetchRaces();
     setState(() {});

@@ -26,6 +26,7 @@ class _RaceDetailsViewState extends State<RaceDetailsView> {
       double.parse(widget.race.circuit.location.lat),
       double.parse(widget.race.circuit.location.long),
     );
+    setState(() {});
   }
 
   @override
@@ -39,25 +40,63 @@ class _RaceDetailsViewState extends State<RaceDetailsView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Date: ${viewModel.formatDate(widget.race.date)}',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Text('Time: ${viewModel.formatTimeInGMT(widget.race.time)}',
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+              ],
+            ),
+            Text('Circuit: ${widget.race.circuit.circuitName}',
+                style: TextStyle(fontWeight: FontWeight.bold)),
+            Text(
+                'Location: ${widget.race.circuit.location.locality}, ${widget.race.circuit.location.country} ${viewModel.countryFlag(widget.race.circuit.location.country)}',
+                style: TextStyle(fontWeight: FontWeight.bold)),
+            SizedBox(height: 10),
+            Container(
+              color: Colors.black12,
+              child: Center(
+                child: FutureBuilder<String>(
+                  future: viewModel.circuitPic(widget.race.circuit.circuitName),
+                  builder:
+                      (BuildContext context, AsyncSnapshot<String> snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return CircularProgressIndicator();
+                    } else if (snapshot.hasError) {
+                      return Text('Error: ${snapshot.error}');
+                    } else {
+                      return Image.network(snapshot.data!, scale: 1.5);
+                    }
+                  },
+                ),
+              ),
+            ),
+            SizedBox(height: 10),
             SizedBox(
               height: 300,
               child: FlutterMap(
                 mapController: mapController,
                 options: MapOptions(
-                  center: LatLng(_initialCameraPosition!.latitude, _initialCameraPosition!.longitude),
+                  center: LatLng(_initialCameraPosition!.latitude,
+                      _initialCameraPosition!.longitude),
                   zoom: 13.0,
                 ),
                 children: [
                   TileLayer(
-                  urlTemplate:
-                  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                  // "https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg",
-                  subdomains: ['a', 'b', 'c'],
+                    urlTemplate:
+                        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                    // "https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg",
+                    subdomains: ['a', 'b', 'c'],
                   ),
                   MarkerLayer(
                     markers: [
                       Marker(
-                        point: LatLng(_initialCameraPosition!.latitude, _initialCameraPosition!.longitude),
+                        point: LatLng(_initialCameraPosition!.latitude,
+                            _initialCameraPosition!.longitude),
                         builder: (context) => Icon(Icons.location_on),
                       ),
                     ],
@@ -65,12 +104,6 @@ class _RaceDetailsViewState extends State<RaceDetailsView> {
                 ],
               ),
             ),
-            Text('Date: ${viewModel.formatDate(widget.race.date)}'),
-            Text('Time: ${viewModel.formatTimeInGMT(widget.race.time)}'),
-            Text('Circuit: ${widget.race.circuit.circuitName}'),
-            Text(
-                'Location: ${widget.race.circuit.location.locality}, ${widget.race.circuit.location.country} ${viewModel.countryFlag(widget.race.circuit.location.country)}'),
-            Container(color: Colors.black12,child: Center(child: Image.network('${viewModel.circuitPic(widget.race.circuit.circuitName)}',scale: 1.5,))),
           ],
         ),
       ),
