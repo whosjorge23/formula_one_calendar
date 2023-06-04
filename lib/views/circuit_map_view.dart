@@ -1,3 +1,4 @@
+import 'package:blurry/blurry.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:formula_one_calendar/models/race_data.dart';
@@ -63,6 +64,20 @@ class _CircuitMapViewState extends State<CircuitMapView> {
                       //     fullscreenDialog: true,
                       //   ),
                       // );
+                      Blurry.info(
+                          title:  '${circuit.circuitName}',
+                          description:'${circuit.location.locality} ${circuit.location.country}',
+                          confirmButtonText:  'Close',
+                          displayCancelButton: false,
+                          titleTextStyle:  const TextStyle(fontFamily:  'Zen'),
+                          popupHeight:  300,
+                          buttonTextStyle:  const TextStyle(
+                              decoration: TextDecoration.underline,
+                              fontFamily:  'Zen'
+                          ),
+                          descriptionTextStyle:  const TextStyle(fontFamily:  'Zen'),
+                          onConfirmButtonPressed: () {Navigator.pop(context);})
+                          .show(context);
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -90,7 +105,6 @@ class _CircuitMapViewState extends State<CircuitMapView> {
             ),
           ],
         ),
-        // Your custom overlay view
       ],
     );
   }
