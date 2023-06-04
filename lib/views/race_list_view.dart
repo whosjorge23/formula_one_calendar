@@ -31,29 +31,56 @@ class _RaceListViewState extends State<RaceListView> {
       // appBar: AppBar(
       //   title: Text('Races'),
       // ),
-      body: (races != null) ? ListView.builder(
-        itemCount: races!.length,
-        itemBuilder: (context, index) {
-          var race = races![index];
-          return ListTile(
-            title: Text("**${race.raceName}**", style: TextStyle(fontWeight: FontWeight.bold)),
-            subtitle: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("**Race** ${viewModel.formatDate(race.date)} at ${viewModel.formatTimeInGMT(race.time)}"),
-                Text("**Circuit** ${race.circuit.circuitName}\n**Place** ${race.circuit.location.locality}, ${race.circuit.location.country} ${viewModel.countryFlag(race.circuit.location.country)}"),
-                Text("**Round** ${race.round}", style: TextStyle(fontSize: 24)),
-              ],
-            ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => RaceDetailsView(race: race)),
+      body: FutureBuilder<List<Race>?>(
+          future: viewModel.fetchRaces(),
+          // assuming fetchRaces() is a function that returns Future<List<Race>>
+          builder: (BuildContext context, AsyncSnapshot<List<Race>?> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(child: CircularProgressIndicator());
+            } else if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error}');
+            } else {
+              return ListView.builder(
+                itemCount: snapshot.data!.length,
+                itemBuilder: (context, index) {
+                  var race = snapshot.data![index];
+                  return ListTile(
+                    title: Text("${race.raceName}",
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                    "Race ${viewModel.formatDate(race.date)} at ${viewModel.formatTimeInGMT(race.time)}"),
+                                Text(
+                                    "Circuit ${race.circuit.circuitName}\nPlace ${race.circuit.location.locality}, ${race.circuit.location.country} ${viewModel.countryFlag(race.circuit.location.country)}"),
+                              ],
+                            ),
+                            // Text("**Round** ${race.round}", style: TextStyle(fontSize: 24)),
+                            Text("${race.round}",
+                                style: TextStyle(fontSize: 24)),
+                          ],
+                        ),
+                      ],
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => RaceDetailsView(race: race)),
+                      );
+                    },
+                  );
+                },
               );
-            },
-          );
-        },
-      ) : Center(child: CircularProgressIndicator()),
+            }
+          }),
     );
   }
 }
