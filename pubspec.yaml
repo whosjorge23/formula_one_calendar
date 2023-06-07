@@ -49,6 +49,8 @@ dependencies:
 
   blurry:
 
+  url_launcher: ^6.1.11
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

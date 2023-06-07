@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CreditsView extends StatelessWidget {
   @override
@@ -10,14 +11,14 @@ class CreditsView extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-
             Form(
               child: Column(
                 children: [
                   SectionHeader(title: 'Application'),
                   InfoRowView(name: 'Developer', content: 'Giorgio Giannotta'),
                   InfoRowView(name: 'Platforms', content: 'iOS, Web & Flutter'),
-                  InfoRowView(name: 'Languages', content: 'Swift, Python, JS, Dart'),
+                  InfoRowView(
+                      name: 'Languages', content: 'Swift, Python, JS, Dart'),
                   InfoRowView(
                     name: 'Website',
                     linkLabel: 'Softbay X',
@@ -95,22 +96,31 @@ class InfoRowView extends StatelessWidget {
         trailing: content != null
             ? Text(content!)
             : linkLabel != null && linkDestination != null
-            ? Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TextButton(
-              onPressed: () {
-                //TODO: Implement Links
-              },
-              child: Text(
-                linkLabel!,
-                style: TextStyle(color: Colors.red),
-              ),
-            ),
-          ],
-        )
-            : SizedBox.shrink(),
+                ? Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          _launchInBrowser(Uri.parse("${linkDestination}"));
+                        },
+                        child: Text(
+                          linkLabel!,
+                          style: TextStyle(color: Colors.red),
+                        ),
+                      ),
+                    ],
+                  )
+                : SizedBox.shrink(),
       ),
     );
+  }
+
+  Future<void> _launchInBrowser(Uri url) async {
+    if (!await launchUrl(
+      url,
+      mode: LaunchMode.externalApplication,
+    )) {
+      throw Exception('Could not launch $url');
+    }
   }
 }
