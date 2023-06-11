@@ -9,7 +9,8 @@ class ConstructorsViewModel {
   List<Constructors> constructors = [];
 
   Future<List<Constructors>?> fetchConstructors() async {
-    final response = await http.get(Uri.parse('https://ergast.com/api/f1/2023/constructors.json'));
+    final response = await http
+        .get(Uri.parse('https://ergast.com/api/f1/2023/constructors.json'));
 
     if (response.statusCode == 200) {
       final jsonData = json.decode(response.body);
@@ -282,6 +283,33 @@ class ConstructorsViewModel {
         return '1978';
       default:
         return 'First Team Entry';
+    }
+  }
+
+  Color constructorColor(String constructorName) {
+    switch (constructorName) {
+      case 'Alfa Romeo':
+        return Color(0xFF930614);
+      case 'AlphaTauri':
+        return Color(0xFF314051);
+      case 'Alpine F1 Team':
+        return Color(0xFF056AAF);
+      case 'Aston Martin':
+        return Color(0xFF00594E);
+      case 'Ferrari':
+        return Color(0xFFCC151C);
+      case 'Haas F1 Team':
+        return Color(0xFF151212);
+      case 'McLaren':
+        return Color(0xFFFE9809);
+      case 'Mercedes':
+        return Color(0xFF00E0B2);
+      case 'Red Bull':
+        return Color(0xFF2b2c38);
+      case 'Williams':
+        return Color(0xFF0D3DAA);
+      default:
+        return Color(0xFFFE9809);
     }
   }
 }

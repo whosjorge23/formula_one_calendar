@@ -22,6 +22,7 @@ class ConstructorDetailsViewState extends State<ConstructorDetailsView> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.constructor.name),
+        backgroundColor: viewModel.constructorColor(widget.constructor.name),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -120,8 +121,10 @@ class DriverButton extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => DriverDetailsView(
-                selectedDriver: viewModel
-                    .constructorDriversID(constructor.name)[driverNum]),
+              selectedDriver:
+                  viewModel.constructorDriversID(constructor.name)[driverNum],
+              constructorColor: viewModel.constructorColor(constructor.name),
+            ),
           ),
         );
       },
