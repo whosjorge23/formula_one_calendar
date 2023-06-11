@@ -7,14 +7,14 @@ import 'driver_view.dart';
 class ConstructorDetailsView extends StatefulWidget {
   final Constructors constructor;
 
-  ConstructorDetailsView({Key? key, required this.constructor})
+  const ConstructorDetailsView({Key? key, required this.constructor})
       : super(key: key);
 
   @override
-  _ConstructorDetailsViewState createState() => _ConstructorDetailsViewState();
+  ConstructorDetailsViewState createState() => ConstructorDetailsViewState();
 }
 
-class _ConstructorDetailsViewState extends State<ConstructorDetailsView> {
+class ConstructorDetailsViewState extends State<ConstructorDetailsView> {
   ConstructorsViewModel viewModel = ConstructorsViewModel();
 
   @override
@@ -33,24 +33,25 @@ class _ConstructorDetailsViewState extends State<ConstructorDetailsView> {
               width: MediaQuery.of(context).size.width,
               height: 200,
               fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) => Icon(Icons.error),
+              errorBuilder: (context, error, stackTrace) =>
+                  const Icon(Icons.error),
             ),
 
             Text(
                 'Full Team Name: ${viewModel.constructorFullName(widget.constructor.name)}',
-                style: Theme.of(context).textTheme.headline6),
+                style: Theme.of(context).textTheme.titleLarge),
             Text(
                 'Nationality: ${widget.constructor.nationality} ${viewModel.constructorNationalityFlag(widget.constructor.nationality)}',
-                style: Theme.of(context).textTheme.headline6),
+                style: Theme.of(context).textTheme.titleLarge),
             Text('Base: ${viewModel.constructorBase(widget.constructor.name)}',
-                style: Theme.of(context).textTheme.headline6),
+                style: Theme.of(context).textTheme.titleLarge),
             Text(
                 'Power Unit: ${viewModel.constructorPowerUnit(widget.constructor.name)}',
-                style: Theme.of(context).textTheme.headline6),
+                style: Theme.of(context).textTheme.titleLarge),
             Text(
                 'First Team Entry: ${viewModel.constructorEntry(widget.constructor.name)}',
-                style: Theme.of(context).textTheme.headline6),
-            Text('Drivers: ', style: Theme.of(context).textTheme.headline6),
+                style: Theme.of(context).textTheme.titleLarge),
+            Text('Drivers: ', style: Theme.of(context).textTheme.titleLarge),
             Row(
               children: [
                 DriverButton(
@@ -86,7 +87,8 @@ class _ConstructorDetailsViewState extends State<ConstructorDetailsView> {
               aspectRatio: 16 / 9,
               child: Image.network(
                 viewModel.constructorImageCarUrl(widget.constructor.name),
-                errorBuilder: (context, error, stackTrace) => Icon(Icons.error),
+                errorBuilder: (context, error, stackTrace) =>
+                    const Icon(Icons.error),
               ),
             ),
           ],
@@ -111,9 +113,8 @@ class DriverButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      child: Text(
-          '${viewModel.constructorDrivers(constructor.name)[driverNum]}',
-          style: Theme.of(context).textTheme.headline6),
+      child: Text(viewModel.constructorDrivers(constructor.name)[driverNum],
+          style: Theme.of(context).textTheme.titleLarge),
       onPressed: () {
         Navigator.push(
           context,
