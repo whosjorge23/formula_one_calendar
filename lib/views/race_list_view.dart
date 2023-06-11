@@ -27,9 +27,9 @@ class _RaceListViewState extends State<RaceListView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text('Races'),
-      // ),
+      appBar: AppBar(
+        title: Text('Races List'),
+      ),
       body: FutureBuilder<List<Race>?>(
           future: viewModel.fetchRaces(),
           // assuming fetchRaces() is a function that returns Future<List<Race>>

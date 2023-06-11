@@ -26,6 +26,9 @@ class _ConstructorsViewState extends State<ConstructorsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Teams List'),
+      ),
       body: FutureBuilder<List<Constructors>?>(
         future: constructorsViewModel.fetchConstructors(),
         builder: (context, snapshot) {
@@ -47,24 +50,30 @@ class _ConstructorsViewState extends State<ConstructorsView> {
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Nationality: ${constructor.nationality} ${constructorsViewModel.constructorNationalityFlag(constructor.nationality)}'),
-                      Text('Power Unit: ${constructorsViewModel.constructorPowerUnit(constructor.name)}'),
-                      Text('Drivers: ${constructorsViewModel.constructorDrivers(constructor.name)[0]} - ${constructorsViewModel.constructorDrivers(constructor.name)[1]}'),
+                      Text(
+                          'Nationality: ${constructor.nationality} ${constructorsViewModel.constructorNationalityFlag(constructor.nationality)}'),
+                      Text(
+                          'Power Unit: ${constructorsViewModel.constructorPowerUnit(constructor.name)}'),
+                      Text(
+                          'Drivers: ${constructorsViewModel.constructorDrivers(constructor.name)[0]} - ${constructorsViewModel.constructorDrivers(constructor.name)[1]}'),
                     ],
                   ),
                   trailing: SizedBox(
                     width: 60,
                     height: 60,
                     child: Image.network(
-                      constructorsViewModel.constructorImageUrl(constructor.name),
-                      errorBuilder: (context, error, stackTrace) => Icon(Icons.image_not_supported),
+                      constructorsViewModel
+                          .constructorImageUrl(constructor.name),
+                      errorBuilder: (context, error, stackTrace) =>
+                          Icon(Icons.image_not_supported),
                     ),
                   ),
                   onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ConstructorDetailsView(constructor: constructor),
+                        builder: (context) =>
+                            ConstructorDetailsView(constructor: constructor),
                       ),
                     );
                   },
@@ -76,5 +85,4 @@ class _ConstructorsViewState extends State<ConstructorsView> {
       ),
     );
   }
-
 }

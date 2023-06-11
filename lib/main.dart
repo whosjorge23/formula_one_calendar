@@ -19,15 +19,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Formula One Races'),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -46,9 +44,9 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+      // appBar: AppBar(
+      //   title: Text(widget.title),
+      // ),
       body: pageList[_currentIndex],
       bottomNavigationBar: SalomonBottomBar(
         currentIndex: _currentIndex,
@@ -64,21 +62,21 @@ class _MyHomePageState extends State<MyHomePage> {
           /// Likes
           SalomonBottomBarItem(
             icon: Icon(Icons.map_outlined),
-            title: Text("Circuits Map"),
+            title: Text("Map"),
             selectedColor: Colors.pink,
           ),
 
           /// Search
           SalomonBottomBarItem(
             icon: Icon(Icons.drive_eta),
-            title: Text("Constructors"),
+            title: Text("Teams"),
             selectedColor: Colors.orange,
           ),
 
           /// Profile
           SalomonBottomBarItem(
             icon: Icon(Icons.person),
-            title: Text("Developer Info"),
+            title: Text("Credits"),
             selectedColor: Colors.teal,
           ),
         ],
