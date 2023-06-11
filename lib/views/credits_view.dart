@@ -5,16 +5,16 @@ class CreditsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text('Developer Credits'),
-      // ),
+      appBar: AppBar(
+        title: Text('Developer Credits'),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Form(
               child: Column(
                 children: [
-                  SectionHeader(title: 'Application'),
+                  // SectionHeader(title: 'Application'),
                   InfoRowView(name: 'Developer', content: 'Giorgio Giannotta'),
                   InfoRowView(name: 'Platforms', content: 'iOS, Web & Flutter'),
                   InfoRowView(
