@@ -13,7 +13,8 @@ class CircuitMapView extends StatefulWidget {
 class _CircuitMapViewState extends State<CircuitMapView> {
   final MapController mapController = MapController();
   RaceListViewModel viewModel = RaceListViewModel();
-  List<Circuit> circuitLocations = []; // Fetch your data and assign it to this variable
+  List<Circuit> circuitLocations =
+      []; // Fetch your data and assign it to this variable
   Circuit? selectedCircuit;
 
   @override
@@ -23,11 +24,9 @@ class _CircuitMapViewState extends State<CircuitMapView> {
     fetchCircuitLocation();
   }
 
-  fetchCircuitLocation () async {
+  fetchCircuitLocation() async {
     circuitLocations = (await viewModel.fetchCircuitLocation())!;
-    setState(() {
-
-    });
+    setState(() {});
   }
 
   @override
@@ -48,8 +47,7 @@ class _CircuitMapViewState extends State<CircuitMapView> {
             MarkerLayer(
               markers: circuitLocations.map((circuit) {
                 return Marker(
-                  point: LatLng(
-                      double.tryParse(circuit.location.lat) ?? 0,
+                  point: LatLng(double.tryParse(circuit.location.lat) ?? 0,
                       double.tryParse(circuit.location.long) ?? 0),
                   builder: (context) => GestureDetector(
                     onTap: () {
@@ -64,20 +62,40 @@ class _CircuitMapViewState extends State<CircuitMapView> {
                       //     fullscreenDialog: true,
                       //   ),
                       // );
-                      Blurry.info(
-                          title:  '${circuit.circuitName}',
-                          description:'${circuit.location.locality} ${circuit.location.country}',
-                          confirmButtonText:  'Close',
-                          displayCancelButton: false,
-                          titleTextStyle:  const TextStyle(fontFamily:  'Zen'),
-                          popupHeight:  300,
-                          buttonTextStyle:  const TextStyle(
-                              decoration: TextDecoration.underline,
-                              fontFamily:  'Zen'
-                          ),
-                          descriptionTextStyle:  const TextStyle(fontFamily:  'Zen'),
-                          onConfirmButtonPressed: () {Navigator.pop(context);})
-                          .show(context);
+                      viewModel
+                          .circuitPic(circuit.circuitName)
+                          .then((value) => {
+                                _dialogBuilder(
+                                  context,
+                                  title: '${circuit.circuitName}',
+                                  locality: '${circuit.location.locality}',
+                                  country: '${circuit.location.country}',
+                                  imageUrl: '${value}',
+                                )
+                              });
+                      // _dialogBuilder(
+                      //   context,
+                      //   title: '${circuit.circuitName}',
+                      //   locality: '${circuit.location.locality}',
+                      //   country: '${circuit.location.country}',
+                      //   imageUrl: '${viewModel.circuitPic("ee")}',
+                      // );
+                      // Blurry.info(
+                      //     title: '${circuit.circuitName}',
+                      //     description:
+                      //         '${circuit.location.locality} ${circuit.location.country}',
+                      //     confirmButtonText: 'Close',
+                      //     displayCancelButton: false,
+                      //     titleTextStyle: const TextStyle(fontFamily: 'Zen'),
+                      //     popupHeight: 300,
+                      //     buttonTextStyle: const TextStyle(
+                      //         decoration: TextDecoration.underline,
+                      //         fontFamily: 'Zen'),
+                      //     descriptionTextStyle:
+                      //         const TextStyle(fontFamily: 'Zen'),
+                      //     onConfirmButtonPressed: () {
+                      //       Navigator.pop(context);
+                      //     }).show(context);
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -106,6 +124,46 @@ class _CircuitMapViewState extends State<CircuitMapView> {
           ],
         ),
       ],
+    );
+  }
+
+  Future<void> _dialogBuilder(BuildContext context,
+      {required String title,
+      required String locality,
+      required String country,
+      required String imageUrl}) {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(title),
+          content: Container(
+            height: 190,
+            child: Column(
+              children: [
+                Text("$locality $country"),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                      color: Colors.grey,
+                      child: Image.network(imageUrl, scale: 2)),
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              style: TextButton.styleFrom(
+                textStyle: Theme.of(context).textTheme.labelLarge,
+              ),
+              child: const Text('Ok'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
