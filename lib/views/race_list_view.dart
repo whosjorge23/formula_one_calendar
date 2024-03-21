@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:formula_one_calendar/models/race_data.dart';
+import 'package:formula_one_calendar/models/race.dart';
 import 'package:formula_one_calendar/viewmodels/race_viewmodel.dart';
 import 'package:formula_one_calendar/views/race_details.dart';
 
@@ -44,8 +44,7 @@ class _RaceListViewState extends State<RaceListView> {
                 itemBuilder: (context, index) {
                   var race = snapshot.data![index];
                   return ListTile(
-                    title: Text("${race.raceName}",
-                        style: TextStyle(fontWeight: FontWeight.bold)),
+                    title: Text("${race.raceName}", style: TextStyle(fontWeight: FontWeight.bold)),
                     subtitle: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -56,14 +55,13 @@ class _RaceListViewState extends State<RaceListView> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                    "Race ${viewModel.formatDate(race.date)} at ${viewModel.formatTimeInGMT(race.time)}"),
+                                    "Race ${viewModel.formatDate(race.date ?? "-")} at ${viewModel.formatTimeInGMT(race.time ?? "-")}"),
                                 Text(
-                                    "Circuit ${race.circuit.circuitName}\nPlace ${race.circuit.location.locality}, ${race.circuit.location.country} ${viewModel.countryFlag(race.circuit.location.country)}"),
+                                    "Circuit ${race.circuit?.circuitName}\nPlace ${race.circuit?.location?.locality}, ${race.circuit?.location?.country} ${viewModel.countryFlag(race.circuit?.location!.country ?? "-")}"),
                               ],
                             ),
                             // Text("**Round** ${race.round}", style: TextStyle(fontSize: 24)),
-                            Text("${race.round}",
-                                style: TextStyle(fontSize: 24)),
+                            Text("${race.round}", style: TextStyle(fontSize: 24)),
                           ],
                         ),
                       ],
@@ -71,8 +69,7 @@ class _RaceListViewState extends State<RaceListView> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => RaceDetailsView(race: race)),
+                        MaterialPageRoute(builder: (context) => RaceDetailsView(race: race)),
                       );
                     },
                   );

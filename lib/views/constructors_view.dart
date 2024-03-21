@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:formula_one_calendar/models/constructor_data.dart';
+import 'package:formula_one_calendar/models/constructor.dart';
 import 'package:formula_one_calendar/viewmodels/constructor_viewmodel.dart';
 
 import 'constructor_details_view.dart';
@@ -44,36 +44,32 @@ class _ConstructorsViewState extends State<ConstructorsView> {
                 final constructor = constructors[index];
                 return ListTile(
                   title: Text(
-                    constructor.name,
+                    constructor.name ?? "-",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                          'Nationality: ${constructor.nationality} ${constructorsViewModel.constructorNationalityFlag(constructor.nationality)}'),
+                          'Nationality: ${constructor.nationality} ${constructorsViewModel.constructorNationalityFlag(constructor.nationality ?? "-")}'),
+                      Text('Power Unit: ${constructorsViewModel.constructorPowerUnit(constructor.name ?? "-")}'),
                       Text(
-                          'Power Unit: ${constructorsViewModel.constructorPowerUnit(constructor.name)}'),
-                      Text(
-                          'Drivers: ${constructorsViewModel.constructorDrivers(constructor.name)[0]} - ${constructorsViewModel.constructorDrivers(constructor.name)[1]}'),
+                          'Drivers: ${constructorsViewModel.constructorDrivers(constructor.name ?? "-")[0]} - ${constructorsViewModel.constructorDrivers(constructor.name ?? "-")[1]}'),
                     ],
                   ),
                   trailing: SizedBox(
                     width: 60,
                     height: 60,
                     child: Image.network(
-                      constructorsViewModel
-                          .constructorImageUrl(constructor.name),
-                      errorBuilder: (context, error, stackTrace) =>
-                          Icon(Icons.image_not_supported),
+                      constructorsViewModel.constructorImageUrl(constructor.name ?? "-"),
+                      errorBuilder: (context, error, stackTrace) => Icon(Icons.image_not_supported),
                     ),
                   ),
                   onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>
-                            ConstructorDetailsView(constructor: constructor),
+                        builder: (context) => ConstructorDetailsView(constructor: constructor),
                       ),
                     );
                   },

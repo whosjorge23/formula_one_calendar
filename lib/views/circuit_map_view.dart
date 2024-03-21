@@ -1,7 +1,7 @@
 import 'package:blurry/blurry.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:formula_one_calendar/models/race_data.dart';
+import 'package:formula_one_calendar/models/race.dart';
 import 'package:formula_one_calendar/viewmodels/race_viewmodel.dart';
 import 'package:latlong2/latlong.dart';
 
@@ -13,8 +13,7 @@ class CircuitMapView extends StatefulWidget {
 class _CircuitMapViewState extends State<CircuitMapView> {
   final MapController mapController = MapController();
   RaceListViewModel viewModel = RaceListViewModel();
-  List<Circuit> circuitLocations =
-      []; // Fetch your data and assign it to this variable
+  List<Circuit> circuitLocations = []; // Fetch your data and assign it to this variable
   Circuit? selectedCircuit;
 
   @override
@@ -47,8 +46,8 @@ class _CircuitMapViewState extends State<CircuitMapView> {
             MarkerLayer(
               markers: circuitLocations.map((circuit) {
                 return Marker(
-                  point: LatLng(double.tryParse(circuit.location.lat) ?? 0,
-                      double.tryParse(circuit.location.long) ?? 0),
+                  point: LatLng(double.tryParse(circuit.location?.lat ?? "0.0") ?? 0,
+                      double.tryParse(circuit.location?.long ?? "0.0") ?? 0),
                   builder: (context) => GestureDetector(
                     onTap: () {
                       // setState(() {
@@ -62,17 +61,15 @@ class _CircuitMapViewState extends State<CircuitMapView> {
                       //     fullscreenDialog: true,
                       //   ),
                       // );
-                      viewModel
-                          .circuitPic(circuit.circuitName)
-                          .then((value) => {
-                                _dialogBuilder(
-                                  context,
-                                  title: '${circuit.circuitName}',
-                                  locality: '${circuit.location.locality}',
-                                  country: '${circuit.location.country}',
-                                  imageUrl: '${value}',
-                                )
-                              });
+                      viewModel.circuitPic(circuit?.circuitName ?? "-").then((value) => {
+                            _dialogBuilder(
+                              context,
+                              title: '${circuit.circuitName}',
+                              locality: '${circuit.location?.locality}',
+                              country: '${circuit.location?.country}',
+                              imageUrl: '${value}',
+                            )
+                          });
                       // _dialogBuilder(
                       //   context,
                       //   title: '${circuit.circuitName}',
@@ -128,25 +125,20 @@ class _CircuitMapViewState extends State<CircuitMapView> {
   }
 
   Future<void> _dialogBuilder(BuildContext context,
-      {required String title,
-      required String locality,
-      required String country,
-      required String imageUrl}) {
+      {required String title, required String locality, required String country, required String imageUrl}) {
     return showDialog<void>(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text(title),
-          content: Container(
+          content: SizedBox(
             height: 190,
             child: Column(
               children: [
                 Text("$locality $country"),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                      color: Colors.grey,
-                      child: Image.network(imageUrl, scale: 2)),
+                  child: Container(color: Colors.grey, child: Image.network(imageUrl, scale: 2)),
                 ),
               ],
             ),
