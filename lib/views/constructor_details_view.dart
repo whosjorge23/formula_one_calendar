@@ -21,7 +21,7 @@ class ConstructorDetailsViewState extends State<ConstructorDetailsView> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.constructor.name ?? "-"),
-        backgroundColor: viewModel.constructorColor(widget.constructor.name ?? "-"),
+        backgroundColor: widget.constructor.getConstructorColor,
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -29,23 +29,22 @@ class ConstructorDetailsViewState extends State<ConstructorDetailsView> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Image.network(
-              viewModel.constructorImageEXTUrl(widget.constructor.name ?? "-"),
+              widget.constructor.getConstructorImageEXT,
               width: MediaQuery.of(context).size.width,
               height: 200,
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) => const Icon(Icons.error),
             ),
 
-            Text('Full Team Name: ${viewModel.constructorFullName(widget.constructor.name ?? "-")}',
+            Text('Full Team Name: ${widget.constructor.getConstructorFullname ?? "-"}',
                 style: Theme.of(context).textTheme.titleLarge),
-            Text(
-                'Nationality: ${widget.constructor.nationality} ${viewModel.constructorNationalityFlag(widget.constructor.nationality ?? "-")}',
+            Text('Nationality: ${widget.constructor.nationality} ${widget.constructor.getConstructorFlag}',
                 style: Theme.of(context).textTheme.titleLarge),
-            Text('Base: ${viewModel.constructorBase(widget.constructor.name ?? "-")}',
+            Text('Base: ${widget.constructor.getConstructorBase ?? "-"}',
                 style: Theme.of(context).textTheme.titleLarge),
-            Text('Power Unit: ${viewModel.constructorPowerUnit(widget.constructor.name ?? "-")}',
+            Text('Power Unit: ${widget.constructor.getConstructorPowerUnit}',
                 style: Theme.of(context).textTheme.titleLarge),
-            Text('First Team Entry: ${viewModel.constructorEntry(widget.constructor.name ?? "-")}',
+            Text('First Team Entry: ${widget.constructor.getConstructorEntryYear ?? "-"}',
                 style: Theme.of(context).textTheme.titleLarge),
             Text('Drivers: ', style: Theme.of(context).textTheme.titleLarge),
             Row(
@@ -76,7 +75,7 @@ class ConstructorDetailsViewState extends State<ConstructorDetailsView> {
             AspectRatio(
               aspectRatio: 16 / 9,
               child: Image.network(
-                viewModel.constructorImageCarUrl(widget.constructor.name ?? "-"),
+                widget.constructor.getConstructorCarImage,
                 errorBuilder: (context, error, stackTrace) => const Icon(Icons.error),
               ),
             ),
@@ -102,15 +101,14 @@ class DriverButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      child: Text(viewModel.constructorDrivers(constructor.name ?? "-")[driverNum],
-          style: Theme.of(context).textTheme.titleLarge),
+      child: Text(constructor.getConstructorDrivers[driverNum], style: Theme.of(context).textTheme.titleLarge),
       onPressed: () {
         Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => DriverDetailsView(
-              selectedDriver: viewModel.constructorDriversID(constructor.name ?? "-")[driverNum],
-              constructorColor: viewModel.constructorColor(constructor.name ?? "-"),
+              selectedDriver: constructor.getConstructorDriversID[driverNum],
+              constructorColor: constructor.getConstructorColor,
             ),
           ),
         );

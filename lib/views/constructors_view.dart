@@ -50,18 +50,17 @@ class _ConstructorsViewState extends State<ConstructorsView> {
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Text('Nationality: ${constructor.nationality} ${constructor.getConstructorFlag}'),
+                      Text('Power Unit: ${constructor.getConstructorPowerUnit}'),
                       Text(
-                          'Nationality: ${constructor.nationality} ${constructorsViewModel.constructorNationalityFlag(constructor.nationality ?? "-")}'),
-                      Text('Power Unit: ${constructorsViewModel.constructorPowerUnit(constructor.name ?? "-")}'),
-                      Text(
-                          'Drivers: ${constructorsViewModel.constructorDrivers(constructor.name ?? "-")[0]} - ${constructorsViewModel.constructorDrivers(constructor.name ?? "-")[1]}'),
+                          'Drivers: ${constructor.getConstructorDrivers[0]} - ${constructor.getConstructorDrivers[1]}'),
                     ],
                   ),
                   trailing: SizedBox(
                     width: 60,
                     height: 60,
                     child: Image.network(
-                      constructorsViewModel.constructorImageUrl(constructor.name ?? "-"),
+                      constructor.getConstructorImage,
                       errorBuilder: (context, error, stackTrace) => Icon(Icons.image_not_supported),
                     ),
                   ),
