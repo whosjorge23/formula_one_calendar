@@ -53,24 +53,13 @@ class _RaceDetailsViewState extends State<RaceDetailsView> {
             ),
             Text('Circuit: ${widget.race.circuit?.circuitName}', style: TextStyle(fontWeight: FontWeight.bold)),
             Text(
-                'Location: ${widget.race.circuit?.location?.locality}, ${widget.race.circuit?.location?.country} ${viewModel.countryFlag(widget.race.circuit?.location?.country ?? "-")}',
+                'Location: ${widget.race.circuit?.location?.locality}, ${widget.race.circuit?.location?.country} ${widget.race.circuit?.location?.getCountryFlag ?? "-"}',
                 style: TextStyle(fontWeight: FontWeight.bold)),
             SizedBox(height: 10),
             Container(
               color: Colors.black12,
               child: Center(
-                child: FutureBuilder<String>(
-                  future: viewModel.circuitPic(widget.race.circuit?.circuitName ?? "-"),
-                  builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return CircularProgressIndicator();
-                    } else if (snapshot.hasError) {
-                      return Text('Error: ${snapshot.error}');
-                    } else {
-                      return Image.network(snapshot.data!, scale: 1.5);
-                    }
-                  },
-                ),
+                child: Image.network(widget.race.circuit!.getCircuitPic, scale: 1.5),
               ),
             ),
             SizedBox(height: 10),

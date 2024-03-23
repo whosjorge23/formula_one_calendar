@@ -57,7 +57,7 @@ class _RaceListViewState extends State<RaceListView> {
                                 Text(
                                     "Race ${viewModel.formatDate(race.date ?? "-")} at ${viewModel.formatTimeInGMT(race.time ?? "-")}"),
                                 Text(
-                                    "Circuit ${race.circuit?.circuitName}\nPlace ${race.circuit?.location?.locality}, ${race.circuit?.location?.country} ${viewModel.countryFlag(race.circuit?.location!.country ?? "-")}"),
+                                    "Circuit ${race.circuit?.circuitName}\nPlace ${race.circuit?.location?.locality}, ${race.circuit?.location?.country} ${race.circuit?.location!.getCountryFlag ?? "-"}"),
                               ],
                             ),
                             // Text("**Round** ${race.round}", style: TextStyle(fontSize: 24)),

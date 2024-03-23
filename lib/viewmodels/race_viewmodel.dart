@@ -75,54 +75,54 @@ class RaceListViewModel {
     }
   }
 
-  String countryFlag(String country) {
-    switch (country) {
-      case 'Bahrain':
-        return '🇧🇭';
-      case 'UK':
-        return '🇬🇧';
-      case 'Saudi Arabia':
-        return '🇸🇦';
-      case 'Australia':
-        return '🇦🇺';
-      case 'Azerbaijan':
-        return '🇦🇿';
-      case 'USA':
-        return '🇺🇸';
-      case 'United States':
-        return '🇺🇸';
-      case 'Italy':
-        return '🇮🇹';
-      case 'Monaco':
-        return '🇲🇨';
-      case 'Spain':
-        return '🇪🇸';
-      case 'Canada':
-        return '🇨🇦';
-      case 'Austria':
-        return '🇦🇹';
-      case 'Hungary':
-        return '🇭🇺';
-      case 'Belgium':
-        return '🇧🇪';
-      case 'Netherlands':
-        return '🇳🇱';
-      case 'Singapore':
-        return '🇸🇬';
-      case 'Japan':
-        return '🇯🇵';
-      case 'Qatar':
-        return '🇶🇦';
-      case 'Mexico':
-        return '🇲🇽';
-      case 'Brazil':
-        return '🇧🇷';
-      case 'UAE':
-        return '🇦🇪';
-      default:
-        return 'Country';
-    }
-  }
+  // String countryFlag(String country) {
+  //   switch (country) {
+  //     case 'Bahrain':
+  //       return '🇧🇭';
+  //     case 'UK':
+  //       return '🇬🇧';
+  //     case 'Saudi Arabia':
+  //       return '🇸🇦';
+  //     case 'Australia':
+  //       return '🇦🇺';
+  //     case 'Azerbaijan':
+  //       return '🇦🇿';
+  //     case 'USA':
+  //       return '🇺🇸';
+  //     case 'United States':
+  //       return '🇺🇸';
+  //     case 'Italy':
+  //       return '🇮🇹';
+  //     case 'Monaco':
+  //       return '🇲🇨';
+  //     case 'Spain':
+  //       return '🇪🇸';
+  //     case 'Canada':
+  //       return '🇨🇦';
+  //     case 'Austria':
+  //       return '🇦🇹';
+  //     case 'Hungary':
+  //       return '🇭🇺';
+  //     case 'Belgium':
+  //       return '🇧🇪';
+  //     case 'Netherlands':
+  //       return '🇳🇱';
+  //     case 'Singapore':
+  //       return '🇸🇬';
+  //     case 'Japan':
+  //       return '🇯🇵';
+  //     case 'Qatar':
+  //       return '🇶🇦';
+  //     case 'Mexico':
+  //       return '🇲🇽';
+  //     case 'Brazil':
+  //       return '🇧🇷';
+  //     case 'UAE':
+  //       return '🇦🇪';
+  //     default:
+  //       return 'Country';
+  //   }
+  // }
 
   Future<String> circuitPic(String circuitName) async {
     switch (circuitName) {

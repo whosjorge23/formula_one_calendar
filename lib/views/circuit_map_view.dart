@@ -50,49 +50,13 @@ class _CircuitMapViewState extends State<CircuitMapView> {
                       double.tryParse(circuit.location?.long ?? "0.0") ?? 0),
                   builder: (context) => GestureDetector(
                     onTap: () {
-                      // setState(() {
-                      //   selectedCircuit = circuit;
-                      // });
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) =>
-                      //         CircuitDetailsView(circuit: selectedCircuit),
-                      //     fullscreenDialog: true,
-                      //   ),
-                      // );
-                      viewModel.circuitPic(circuit?.circuitName ?? "-").then((value) => {
-                            _dialogBuilder(
-                              context,
-                              title: '${circuit.circuitName}',
-                              locality: '${circuit.location?.locality}',
-                              country: '${circuit.location?.country}',
-                              imageUrl: '${value}',
-                            )
-                          });
-                      // _dialogBuilder(
-                      //   context,
-                      //   title: '${circuit.circuitName}',
-                      //   locality: '${circuit.location.locality}',
-                      //   country: '${circuit.location.country}',
-                      //   imageUrl: '${viewModel.circuitPic("ee")}',
-                      // );
-                      // Blurry.info(
-                      //     title: '${circuit.circuitName}',
-                      //     description:
-                      //         '${circuit.location.locality} ${circuit.location.country}',
-                      //     confirmButtonText: 'Close',
-                      //     displayCancelButton: false,
-                      //     titleTextStyle: const TextStyle(fontFamily: 'Zen'),
-                      //     popupHeight: 300,
-                      //     buttonTextStyle: const TextStyle(
-                      //         decoration: TextDecoration.underline,
-                      //         fontFamily: 'Zen'),
-                      //     descriptionTextStyle:
-                      //         const TextStyle(fontFamily: 'Zen'),
-                      //     onConfirmButtonPressed: () {
-                      //       Navigator.pop(context);
-                      //     }).show(context);
+                      _dialogBuilder(
+                        context,
+                        title: '${circuit.circuitName}',
+                        locality: '${circuit.location?.locality}',
+                        country: '${circuit.location?.country}',
+                        imageUrl: '${circuit?.getCircuitPic}',
+                      );
                     },
                     child: Container(
                       decoration: BoxDecoration(
