@@ -41,7 +41,7 @@ class _DriverDetailsViewState extends State<DriverDetailsView> {
           child: Column(
             children: [
               Image.network(
-                viewModel.driversPic(widget.selectedDriver),
+                driver!.getDriverPic,
                 loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
                   if (loadingProgress == null) {
                     return child;
@@ -53,15 +53,15 @@ class _DriverDetailsViewState extends State<DriverDetailsView> {
                 errorBuilder: (context, error, stackTrace) => Icon(Icons.error),
               ),
               // Display driver information
-              Text("Number: ${driver!.permanentNumber} ${viewModel.driverNationalityFlag(driver!.nationality ?? "-")}",
+              Text("Number: ${driver!.permanentNumber} ${driver!.getDriverFlag ?? "-"}",
                   style: TextStyle(fontSize: 24)),
               Text("Name: ${driver!.givenName} ${driver!.familyName} ${driver!.code}", style: TextStyle(fontSize: 18)),
-              Text("Nationality: ${driver!.nationality} ${viewModel.driverNationalityFlag(driver!.nationality ?? "-")}",
+              Text("Nationality: ${driver!.nationality} ${driver!.getDriverFlag ?? "-"}",
                   style: TextStyle(fontSize: 18)),
               Text("Date of birth: ${driver!.dateOfBirth}", style: TextStyle(fontSize: 18)),
               // Display driver helmet
               Image.network(
-                viewModel.driversHelmetPic(widget.selectedDriver),
+                driver!.getDriverHelmetPic,
                 loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
                   if (loadingProgress == null) {
                     return child;
