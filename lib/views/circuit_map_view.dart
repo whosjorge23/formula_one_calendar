@@ -2,6 +2,7 @@ import 'package:blurry/blurry.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:formula_one_calendar/models/race.dart';
+import 'package:formula_one_calendar/network/race_repository.dart';
 import 'package:formula_one_calendar/viewmodels/race_viewmodel.dart';
 import 'package:latlong2/latlong.dart';
 
@@ -24,7 +25,7 @@ class _CircuitMapViewState extends State<CircuitMapView> {
   }
 
   fetchCircuitLocation() async {
-    circuitLocations = (await viewModel.fetchCircuitLocation())!;
+    circuitLocations = (await RaceRepository().circuitLocation())!;
     setState(() {});
   }
 
@@ -98,11 +99,15 @@ class _CircuitMapViewState extends State<CircuitMapView> {
           content: SizedBox(
             height: 190,
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Text("$locality $country"),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Container(color: Colors.grey, child: Image.network(imageUrl, scale: 2)),
+                  child: Container(
+                    color: Colors.grey,
+                    child: Image.network(imageUrl, scale: 2),
+                  ),
                 ),
               ],
             ),

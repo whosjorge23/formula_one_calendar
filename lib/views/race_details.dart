@@ -44,11 +44,10 @@ class _RaceDetailsViewState extends State<RaceDetailsView> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Date: ${viewModel.formatDate(widget.race.date ?? "-")}',
+                  'Date: ${widget.race.getDateFormatted ?? "-"}',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                Text('Time: ${viewModel.formatTimeInGMT(widget.race.time ?? "-")}',
-                    style: TextStyle(fontWeight: FontWeight.bold)),
+                Text('Time: ${widget.race.getTimeGMT ?? "-"}', style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
             Text('Circuit: ${widget.race.circuit?.circuitName}', style: TextStyle(fontWeight: FontWeight.bold)),

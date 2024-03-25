@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:formula_one_calendar/models/race.dart';
+import 'package:formula_one_calendar/network/race_repository.dart';
 import 'package:formula_one_calendar/viewmodels/race_viewmodel.dart';
 import 'package:formula_one_calendar/views/race_details.dart';
 
@@ -20,7 +21,7 @@ class _RaceListViewState extends State<RaceListView> {
 
   void fetchRaces() async {
     // Make sure to update the state once data is fetched.
-    races = await viewModel.fetchRaces();
+    races = await RaceRepository().allRaces();
     setState(() {});
   }
 
@@ -31,7 +32,7 @@ class _RaceListViewState extends State<RaceListView> {
         title: Text('Races List'),
       ),
       body: FutureBuilder<List<Race>?>(
-          future: viewModel.fetchRaces(),
+          future: RaceRepository().allRaces(),
           // assuming fetchRaces() is a function that returns Future<List<Race>>
           builder: (BuildContext context, AsyncSnapshot<List<Race>?> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
@@ -54,8 +55,7 @@ class _RaceListViewState extends State<RaceListView> {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                    "Race ${viewModel.formatDate(race.date ?? "-")} at ${viewModel.formatTimeInGMT(race.time ?? "-")}"),
+                                Text("Race ${race.getDateFormatted ?? "-"} at ${race.getTimeGMT ?? "-"}"),
                                 Text(
                                     "Circuit ${race.circuit?.circuitName}\nPlace ${race.circuit?.location?.locality}, ${race.circuit?.location?.country} ${race.circuit?.location!.getCountryFlag ?? "-"}"),
                               ],

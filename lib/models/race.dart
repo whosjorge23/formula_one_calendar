@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'race.g.dart';
@@ -86,6 +87,33 @@ class Race {
   factory Race.fromJson(Map<String, dynamic> json) => _$RaceFromJson(json);
 
   Map<String, dynamic> toJson() => _$RaceToJson(this);
+
+  String get getTimeGMT => formatTimeInGMT(time) ?? "";
+
+  String get getDateFormatted => formatDate(date) ?? "";
+
+  String formatTimeInGMT(String? timeString) {
+    final format = DateFormat("HH:mm:ss'Z'", 'en_US');
+    // format.timeZone = 'GMT';
+
+    try {
+      final date = format.parse(timeString ?? "");
+      final formatter = DateFormat('HH:mm');
+      return formatter.format(date.toLocal());
+    } catch (e) {
+      return '🤷‍♂️🤷‍♂️';
+    }
+  }
+
+  String formatDate(String? dateString) {
+    try {
+      final date = DateTime.parse(dateString ?? "");
+      final formatter = DateFormat('MM/dd/yyyy');
+      return formatter.format(date);
+    } catch (e) {
+      return '🤷‍♂️🤷‍♂️';
+    }
+  }
 }
 
 @JsonSerializable()

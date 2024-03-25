@@ -56,6 +56,15 @@ dependencies:
   #PopUp
   blurry:
 
+  dio: ^5.4.1
+  get_it: ^7.6.4
+  go_router: ^6.2.0
+  gap: ^3.0.1
+  flutter_bloc: ^8.1.3
+  freezed_annotation: ^2.2.0
+  bloc: ^8.1.2
+  lottie: ^2.6.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
