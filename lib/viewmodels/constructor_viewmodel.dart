@@ -8,7 +8,7 @@ class ConstructorsViewModel {
   List<Constructors> constructors = [];
 
   Future<List<Constructors>?> fetchConstructors() async {
-    final response = await http.get(Uri.parse('https://ergast.com/api/f1/2023/constructors.json'));
+    final response = await http.get(Uri.parse('https://ergast.com/api/f1/2024/constructors.json'));
 
     if (response.statusCode == 200) {
       final jsonData = json.decode(response.body);

@@ -121,32 +121,31 @@ class Constructors {
   };
 
   static Map<String, String> constructorImage = {
-    'Alfa Romeo':
-        'https://media.formula1.com/content/dam/fom-website/teams/2023/alfa-romeo-logo.png.transform/2col-retina/image.png',
-    'AlphaTauri':
-        'https://media.formula1.com/content/dam/fom-website/teams/2023/alphatauri-logo.png.transform/2col-retina/image.png',
+    'Sauber':
+        'https://media.formula1.com/content/dam/fom-website/teams/2024/kick-sauber-logo.png.transform/2col-retina/image.png',
+    'RB F1 Team':
+        'https://media.formula1.com/content/dam/fom-website/teams/2024/rb-logo.png.transform/2col-retina/image.png',
     'Alpine F1 Team':
-        'https://media.formula1.com/content/dam/fom-website/teams/2023/alpine-logo.png.transform/2col-retina/image.png',
+        'https://media.formula1.com/content/dam/fom-website/teams/2024/alpine-logo.png.transform/2col-retina/image.png',
     'Aston Martin':
-        'https://media.formula1.com/content/dam/fom-website/teams/2023/aston-martin-logo.png.transform/2col-retina/image.png',
+        'https://media.formula1.com/content/dam/fom-website/teams/2024/aston-martin-logo.png.transform/2col-retina/image.png',
     'Ferrari':
-        'https://media.formula1.com/content/dam/fom-website/teams/2023/ferrari-logo.png.transform/2col-retina/image.png',
+        'https://media.formula1.com/content/dam/fom-website/teams/2024/ferrari-logo.png.transform/2col-retina/image.png',
     'Haas F1 Team':
-        'https://media.formula1.com/content/dam/fom-website/teams/2023/haas-f1-team-logo.png.transform/2col-retina/image.png',
+        'https://media.formula1.com/content/dam/fom-website/teams/2024/haas-f1-team-logo.png.transform/2col-retina/image.png',
     'McLaren':
-        'https://media.formula1.com/content/dam/fom-website/teams/2023/mclaren-logo.png.transform/2col-retina/image.png',
+        'https://media.formula1.com/content/dam/fom-website/teams/2024/mclaren-logo.png.transform/2col-retina/image.png',
     'Mercedes':
-        'https://media.formula1.com/content/dam/fom-website/teams/2023/mercedes-logo.png.transform/2col-retina/image.png',
+        'https://media.formula1.com/content/dam/fom-website/teams/2024/mercedes-logo.png.transform/2col-retina/image.png',
     'Red Bull':
-        'https://media.formula1.com/content/dam/fom-website/teams/2023/red-bull-racing-logo.png.transform/2col-retina/image.png',
+        'https://media.formula1.com/content/dam/fom-website/teams/2024/red-bull-racing-logo.png.transform/2col-retina/image.png',
     'Williams':
-        'https://media.formula1.com/content/dam/fom-website/teams/2023/williams-logo.png.transform/2col-retina/image.png',
+        'https://media.formula1.com/content/dam/fom-website/teams/2024/williams-logo.png.transform/2col-retina/image.png',
   };
 
   static Map<String, String> constructorImageEXT = {
-    'Alfa Romeo':
-        'https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/team%20logos/alfa%20romeo.jpg',
-    'AlphaTauri': 'https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/team%20logos/alphatauri.jpg',
+    'Sauber': 'https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/team%20logos/kick%20sauber.png',
+    'RB F1 Team': 'https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/team%20logos/rb.jpg',
     'Alpine F1 Team': 'https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/team%20logos/alpine.jpg',
     'Aston Martin':
         'https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/team%20logos/aston%20martin.jpg',
@@ -159,31 +158,31 @@ class Constructors {
   };
 
   static Map<String, String> constructorCarImage = {
-    'Alfa Romeo':
-        'https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2023/alfa-romeo.png.transform/4col-retina/image.png',
-    'AlphaTauri':
-        'https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2023/alphatauri.png.transform/4col-retina/image.png',
+    'Sauber':
+        'https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2024/kick-sauber.png.transform/4col-retina/image.png',
+    'RB F1 Team':
+        'https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2024/rb.png.transform/4col-retina/image.png',
     'Alpine F1 Team':
-        'https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2023/alpine.png.transform/4col-retina/image.png',
+        'https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2024/alpine.png.transform/4col-retina/image.png',
     'Aston Martin':
-        'https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2023/aston-martin.png.transform/4col-retina/image.png',
+        'https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2024/aston-martin.png.transform/4col-retina/image.png',
     'Ferrari':
-        'https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2023/ferrari.png.transform/4col-retina/image.png',
+        'https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2024/ferrari.png.transform/4col-retina/image.png',
     'Haas F1 Team':
-        'https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2023/haas-f1-team.png.transform/4col-retina/image.png',
+        'https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2024/haas-f1-team.png.transform/4col-retina/image.png',
     'McLaren':
-        'https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2023/mclaren.png.transform/4col-retina/image.png',
+        'https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2024/mclaren.png.transform/4col-retina/image.png',
     'Mercedes':
-        'https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2023/mercedes.png.transform/4col-retina/image.png',
+        'https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2024/mercedes.png.transform/4col-retina/image.png',
     'Red Bull':
-        'https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2023/red-bull-racing.png.transform/4col-retina/image.png',
+        'https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2024/red-bull-racing.png.transform/4col-retina/image.png',
     'Williams':
-        'https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2023/williams.png.transform/4col-retina/image.png',
+        'https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2024/williams.png.transform/4col-retina/image.png',
   };
 
   static Map<String, String> constructorPowerUnit = {
-    'Alfa Romeo': 'Ferrari',
-    'AlphaTauri': 'Honda RBPT',
+    'Sauber': 'Ferrari',
+    'RB F1 Team': 'Honda RBPT',
     'Alpine F1 Team': 'Renault',
     'Aston Martin': 'Mercedes',
     'Ferrari': 'Ferrari',
@@ -195,8 +194,8 @@ class Constructors {
   };
 
   static Map<String, List<String>> constructorDrivers = {
-    'Alfa Romeo': ['Zhou Guanyu', 'Valtteri Bottas'],
-    'AlphaTauri': ['Yuki Tsunoda', 'Nyck De Vries'],
+    'Sauber': ['Zhou Guanyu', 'Valtteri Bottas'],
+    'RB F1 Team': ['Yuki Tsunoda', 'Daniel Ricciardo'],
     'Alpine F1 Team': ['Pierre Gasly', 'Esteban Ocon'],
     'Aston Martin': ['Lance Stroll', 'Fernando Alonso'],
     'Ferrari': ['Charles Leclerc', 'Carlos Sainz'],
@@ -208,8 +207,8 @@ class Constructors {
   };
 
   static Map<String, List<String>> constructorDriversID = {
-    'Alfa Romeo': ['zhou', 'bottas'],
-    'AlphaTauri': ['tsunoda', 'de_vries'],
+    'Sauber': ['zhou', 'bottas'],
+    'RB F1 Team': ['tsunoda', 'ricciardo'],
     'Alpine F1 Team': ['gasly', 'ocon'],
     'Aston Martin': ['stroll', 'alonso'],
     'Ferrari': ['leclerc', 'sainz'],
@@ -221,8 +220,8 @@ class Constructors {
   };
 
   static Map<String, String> constructorFullname = {
-    'Alfa Romeo': 'Alfa Romeo F1 Team Stake',
-    'AlphaTauri': 'Scuderia AlphaTauri',
+    'Sauber': 'Sauber F1 Team Stake',
+    'RB F1 Team': 'RB F1 Team',
     'Alpine F1 Team': 'BWT Alpine F1 Team',
     'Aston Martin': 'Aston Martin Aramco Cognizant F1 Team',
     'Ferrari': 'Scuderia Ferrari',
@@ -234,8 +233,8 @@ class Constructors {
   };
 
   static Map<String, String> constructorBase = {
-    'Alfa Romeo': 'Hinwil, Switzerland',
-    'AlphaTauri': 'Faenza, Italy',
+    'Sauber': 'Hinwil, Switzerland',
+    'RB F1 Team': 'Faenza, Italy',
     'Alpine F1 Team': 'Enstone, United Kingdom',
     'Aston Martin': 'Silverstone, United Kingdom',
     'Ferrari': 'Maranello, Italy',
@@ -247,8 +246,8 @@ class Constructors {
   };
 
   static Map<String, String> constructorEntryYear = {
-    'Alfa Romeo': '1993',
-    'AlphaTauri': '1985',
+    'Sauber': '1993',
+    'RB F1 Team': '1985',
     'Alpine F1 Team': '1986',
     'Aston Martin': '2018',
     'Ferrari': '1950',
@@ -260,15 +259,15 @@ class Constructors {
   };
 
   static Map<String, Color> constructorColor = {
-    'Alfa Romeo': const Color(0xFF930614),
-    'AlphaTauri': const Color(0xFF314051),
-    'Alpine F1 Team': const Color(0xFF056AAF),
-    'Aston Martin': const Color(0xFF00594E),
-    'Ferrari': const Color(0xFFCC151C),
-    'Haas F1 Team': const Color(0xFF151212),
-    'McLaren': const Color(0xFFFE9809),
-    'Mercedes': const Color(0xFF00E0B2),
-    'Red Bull': const Color(0xFF2b2c38),
-    'Williams': const Color(0xFF0D3DAA),
+    'Sauber': const Color(0xFF52E252),
+    'RB F1 Team': const Color(0xFF6692FF),
+    'Alpine F1 Team': const Color(0xFF0093CC),
+    'Aston Martin': const Color(0xFF229971),
+    'Ferrari': const Color(0xFFE80020),
+    'Haas F1 Team': const Color(0xFFB6BABD),
+    'McLaren': const Color(0xFFFF8000),
+    'Mercedes': const Color(0xFF27F4D2),
+    'Red Bull': const Color(0xFF3671C6),
+    'Williams': const Color(0xFF64C4FF),
   };
 }
