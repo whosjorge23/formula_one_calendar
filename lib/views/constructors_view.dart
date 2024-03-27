@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:formula_one_calendar/models/constructor.dart';
+import 'package:formula_one_calendar/network/constructor_repository.dart';
 import 'package:formula_one_calendar/viewmodels/constructor_viewmodel.dart';
 
 import 'constructor_details_view.dart';
@@ -30,7 +31,7 @@ class _ConstructorsViewState extends State<ConstructorsView> {
         title: Text('Teams List'),
       ),
       body: FutureBuilder<List<Constructors>?>(
-        future: constructorsViewModel.fetchConstructors(),
+        future: ConstructorRepository().fetchConstructors(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
