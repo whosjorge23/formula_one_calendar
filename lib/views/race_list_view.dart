@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:formula_one_calendar/models/race.dart';
 import 'package:formula_one_calendar/network/race_repository.dart';
+import 'package:formula_one_calendar/shared_export.dart';
 import 'package:formula_one_calendar/viewmodels/race_viewmodel.dart';
 import 'package:formula_one_calendar/views/race_details.dart';
 
@@ -21,7 +22,7 @@ class _RaceListViewState extends State<RaceListView> {
 
   void fetchRaces() async {
     // Make sure to update the state once data is fetched.
-    races = await RaceRepository().allRaces();
+    races = await raceRepository.allRaces();
     setState(() {});
   }
 
@@ -32,7 +33,7 @@ class _RaceListViewState extends State<RaceListView> {
         title: Text('Races List'),
       ),
       body: FutureBuilder<List<Race>?>(
-          future: RaceRepository().allRaces(),
+          future: raceRepository.allRaces(),
           // assuming fetchRaces() is a function that returns Future<List<Race>>
           builder: (BuildContext context, AsyncSnapshot<List<Race>?> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {

@@ -25,61 +25,43 @@ class ConstructorDetailsViewState extends State<ConstructorDetailsView> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Image.network(
-              widget.constructor.getConstructorImageEXT,
-              width: MediaQuery.of(context).size.width,
-              height: 200,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) => const Icon(Icons.error),
-            ),
-
-            Text('Full Team Name: ${widget.constructor.getConstructorFullname ?? "-"}',
-                style: Theme.of(context).textTheme.titleLarge),
-            Text('Nationality: ${widget.constructor.nationality} ${widget.constructor.getConstructorFlag}',
-                style: Theme.of(context).textTheme.titleLarge),
-            Text('Base: ${widget.constructor.getConstructorBase ?? "-"}',
-                style: Theme.of(context).textTheme.titleLarge),
-            Text('Power Unit: ${widget.constructor.getConstructorPowerUnit}',
-                style: Theme.of(context).textTheme.titleLarge),
-            Text('First Team Entry: ${widget.constructor.getConstructorEntryYear ?? "-"}',
-                style: Theme.of(context).textTheme.titleLarge),
-            Text('Drivers: ', style: Theme.of(context).textTheme.titleLarge),
-            Row(
-              children: [
-                DriverButton(viewModel: viewModel, constructor: widget.constructor, driverNum: 0),
-                DriverButton(viewModel: viewModel, constructor: widget.constructor, driverNum: 1),
-                // TextButton(
-                //   child: Text(
-                //       '${viewModel.constructorDrivers(widget.constructor.name)[1]}',
-                //       style: Theme.of(context).textTheme.headline6),
-                //   onPressed: () {
-                //     Navigator.push(
-                //       context,
-                //       MaterialPageRoute(
-                //         builder: (context) => DriverDetailsView(
-                //             selectedDriver: viewModel.constructorDriversID(
-                //                 widget.constructor.name)[1]),
-                //       ),
-                //     );
-                //   },
-                // ),
-              ],
-            ),
-            // Text('Car', style: Theme
-            //     .of(context)
-            //     .textTheme
-            //     .headline6),
-            AspectRatio(
-              aspectRatio: 16 / 9,
-              child: Image.network(
-                widget.constructor.getConstructorCarImage,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Image.network(
+                widget.constructor.getConstructorImageEXT,
+                width: MediaQuery.of(context).size.width,
+                height: 200,
+                fit: BoxFit.cover,
                 errorBuilder: (context, error, stackTrace) => const Icon(Icons.error),
               ),
-            ),
-          ],
+              Text('Full Team Name: ${widget.constructor.getConstructorFullname ?? "-"}',
+                  style: Theme.of(context).textTheme.titleLarge),
+              Text('Nationality: ${widget.constructor.nationality} ${widget.constructor.getConstructorFlag}',
+                  style: Theme.of(context).textTheme.titleLarge),
+              Text('Base: ${widget.constructor.getConstructorBase ?? "-"}',
+                  style: Theme.of(context).textTheme.titleLarge),
+              Text('Power Unit: ${widget.constructor.getConstructorPowerUnit}',
+                  style: Theme.of(context).textTheme.titleLarge),
+              Text('First Team Entry: ${widget.constructor.getConstructorEntryYear ?? "-"}',
+                  style: Theme.of(context).textTheme.titleLarge),
+              Text('Drivers: ', style: Theme.of(context).textTheme.titleLarge),
+              Row(
+                children: [
+                  DriverButton(viewModel: viewModel, constructor: widget.constructor, driverNum: 0),
+                  DriverButton(viewModel: viewModel, constructor: widget.constructor, driverNum: 1),
+                ],
+              ),
+              AspectRatio(
+                aspectRatio: 16 / 9,
+                child: Image.network(
+                  widget.constructor.getConstructorCarImage,
+                  errorBuilder: (context, error, stackTrace) => const Icon(Icons.error),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:formula_one_calendar/models/race.dart';
 import 'package:formula_one_calendar/network/race_repository.dart';
+import 'package:formula_one_calendar/shared_export.dart';
 import 'package:formula_one_calendar/viewmodels/race_viewmodel.dart';
 import 'package:latlong2/latlong.dart';
 
@@ -25,7 +26,7 @@ class _CircuitMapViewState extends State<CircuitMapView> {
   }
 
   fetchCircuitLocation() async {
-    circuitLocations = (await RaceRepository().circuitLocation())!;
+    circuitLocations = (await raceRepository.circuitLocation())!;
     setState(() {});
   }
 

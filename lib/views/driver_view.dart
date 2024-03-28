@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:formula_one_calendar/network/driver_repository.dart';
+import 'package:formula_one_calendar/shared_export.dart';
 
 import '../models/driver.dart';
 import '../viewmodels/driver_viewmodel.dart';
@@ -25,7 +26,7 @@ class _DriverDetailsViewState extends State<DriverDetailsView> {
   }
 
   void fetchDriver() async {
-    driver = await DriverRepository().fetchDriver(widget.selectedDriver);
+    driver = await driverRepository.fetchDriver(widget.selectedDriver);
     setState(() {});
   }
 
