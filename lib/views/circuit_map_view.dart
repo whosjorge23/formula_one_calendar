@@ -14,7 +14,6 @@ class CircuitMapView extends StatefulWidget {
 
 class _CircuitMapViewState extends State<CircuitMapView> {
   final MapController mapController = MapController();
-  RaceListViewModel viewModel = RaceListViewModel();
   List<Circuit> circuitLocations = []; // Fetch your data and assign it to this variable
   Circuit? selectedCircuit;
 

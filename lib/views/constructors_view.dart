@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:formula_one_calendar/models/constructor.dart';
-import 'package:formula_one_calendar/network/constructor_repository.dart';
 import 'package:formula_one_calendar/shared_export.dart';
-import 'package:formula_one_calendar/viewmodels/constructor_viewmodel.dart';
 
 import 'constructor_details_view.dart';
 
@@ -12,18 +10,12 @@ class ConstructorsView extends StatefulWidget {
 }
 
 class _ConstructorsViewState extends State<ConstructorsView> {
-  ConstructorsViewModel constructorsViewModel = ConstructorsViewModel();
   List<Constructors> constructors = [];
 
   @override
   void initState() {
     super.initState();
   }
-
-  // fetchConstructors() async {
-  //   constructors = (await constructorsViewModel.fetchConstructors())!;
-  //   setState(() {});
-  // }
 
   @override
   Widget build(BuildContext context) {

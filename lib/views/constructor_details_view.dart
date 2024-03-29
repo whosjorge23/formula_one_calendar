@@ -14,8 +14,6 @@ class ConstructorDetailsView extends StatefulWidget {
 }
 
 class ConstructorDetailsViewState extends State<ConstructorDetailsView> {
-  ConstructorsViewModel viewModel = ConstructorsViewModel();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,8 +47,8 @@ class ConstructorDetailsViewState extends State<ConstructorDetailsView> {
               Text('Drivers: ', style: Theme.of(context).textTheme.titleLarge),
               Row(
                 children: [
-                  DriverButton(viewModel: viewModel, constructor: widget.constructor, driverNum: 0),
-                  DriverButton(viewModel: viewModel, constructor: widget.constructor, driverNum: 1),
+                  DriverButton(constructor: widget.constructor, driverNum: 0),
+                  DriverButton(constructor: widget.constructor, driverNum: 1),
                 ],
               ),
               AspectRatio(
@@ -71,12 +69,10 @@ class ConstructorDetailsViewState extends State<ConstructorDetailsView> {
 class DriverButton extends StatelessWidget {
   const DriverButton({
     super.key,
-    required this.viewModel,
     required this.constructor,
     required this.driverNum,
   });
 
-  final ConstructorsViewModel viewModel;
   final Constructors constructor;
   final int driverNum;
 

@@ -17,7 +17,6 @@ class RaceDetailsView extends StatefulWidget {
 class _RaceDetailsViewState extends State<RaceDetailsView> {
   late LatLng _initialCameraPosition;
   MapController mapController = MapController();
-  RaceListViewModel viewModel = RaceListViewModel();
 
   @override
   void initState() {

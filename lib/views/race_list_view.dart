@@ -11,7 +11,6 @@ class RaceListView extends StatefulWidget {
 }
 
 class _RaceListViewState extends State<RaceListView> {
-  RaceListViewModel viewModel = RaceListViewModel();
   List<Race>? races;
 
   @override

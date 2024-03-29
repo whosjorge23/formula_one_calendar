@@ -16,7 +16,6 @@ class DriverDetailsView extends StatefulWidget {
 }
 
 class _DriverDetailsViewState extends State<DriverDetailsView> {
-  DriversViewModel viewModel = DriversViewModel();
   Driver? driver;
 
   @override
