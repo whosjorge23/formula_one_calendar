@@ -1,8 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formula_one_calendar/features/circuits/circuit_map_screen.dart';
+import 'package:formula_one_calendar/features/circuits/cubit/circuit_cubit.dart';
+import 'package:formula_one_calendar/features/constructors/constructor_details_screen.dart';
+import 'package:formula_one_calendar/features/constructors/constructors_screen.dart';
+import 'package:formula_one_calendar/features/constructors/cubit/constructor_cubit.dart';
+import 'package:formula_one_calendar/features/drivers/cubit/driver_cubit.dart';
+import 'package:formula_one_calendar/features/drivers/driver_screen.dart';
+import 'package:formula_one_calendar/features/races/cubit/race_cubit.dart';
+import 'package:formula_one_calendar/features/races/race_details_screen.dart';
+import 'package:formula_one_calendar/features/races/race_list_screen.dart';
+import 'package:formula_one_calendar/models/constructor.dart';
+import 'package:formula_one_calendar/models/race.dart';
 import 'package:formula_one_calendar/shell/cubit/home_screen_shell_cubit.dart';
 import 'package:formula_one_calendar/shell/home_screen_shell.dart';
 import 'package:formula_one_calendar/views/circuit_map_view.dart';
+import 'package:formula_one_calendar/views/constructor_details_view.dart';
 import 'package:formula_one_calendar/views/constructors_view.dart';
 import 'package:formula_one_calendar/views/credits_view.dart';
 import 'package:formula_one_calendar/views/race_list_view.dart';
@@ -11,8 +24,11 @@ import 'package:go_router/go_router.dart';
 
 class ScreenPaths {
   static String raceList = '/raceList';
+  static String raceDetails = '/raceDetails';
   static String circuitMap = '/circuitMap';
   static String constructorList = '/constructorList';
+  static String constructorDetails = '/constructorDetails';
+  static String driverDetails = '/driverDetails';
   static String credits = '/credits';
 }
 
@@ -45,7 +61,10 @@ GoRouter createGoRouter({
             path: ScreenPaths.raceList,
             pageBuilder: (context, state) {
               return NoTransitionPage(
-                child: RaceListView(),
+                child: BlocProvider(
+                  create: (context) => RaceCubit()..getRaces(),
+                  child: RaceListScreen(),
+                ),
               );
             },
           ),
@@ -53,7 +72,10 @@ GoRouter createGoRouter({
             path: ScreenPaths.circuitMap,
             pageBuilder: (context, state) {
               return NoTransitionPage(
-                child: CircuitMapView(),
+                child: BlocProvider(
+                  create: (context) => CircuitCubit(),
+                  child: CircuitMapScreen(),
+                ),
               );
             },
           ),
@@ -61,7 +83,10 @@ GoRouter createGoRouter({
             path: ScreenPaths.constructorList,
             pageBuilder: (context, state) {
               return NoTransitionPage(
-                child: ConstructorsView(),
+                child: BlocProvider(
+                  create: (context) => ConstructorCubit()..getConstructors(),
+                  child: ConstructorsScreen(),
+                ),
               );
             },
           ),
@@ -74,6 +99,40 @@ GoRouter createGoRouter({
             },
           ),
         ],
+      ),
+      GoRoute(
+        path: ScreenPaths.raceDetails,
+        pageBuilder: (context, state) {
+          Race raceDetails = state.extra as Race;
+          return NoTransitionPage(
+            child: RaceDetailsScreen(
+              race: raceDetails,
+            ),
+          );
+        },
+      ),
+      GoRoute(
+        path: ScreenPaths.constructorDetails,
+        pageBuilder: (context, state) {
+          Constructors constructorDetails = state.extra as Constructors;
+          return NoTransitionPage(
+            child: ConstructorDetailsScreen(
+              constructor: constructorDetails,
+            ),
+          );
+        },
+      ),
+      GoRoute(
+        path: ScreenPaths.driverDetails,
+        pageBuilder: (context, state) {
+          Map<String, Object?> driverDetails = state.extra as Map<String, Object?>;
+          return NoTransitionPage(
+            child: DriverDetailsScreen(
+              selectedDriver: driverDetails['selectedDriver']! as String,
+              constructorColor: driverDetails['constructorColor']! as Color,
+            ),
+          );
+        },
       ),
     ],
     debugLogDiagnostics: true,
