@@ -6,6 +6,7 @@ import 'package:formula_one_calendar/routes/go_router_config.dart';
 import 'package:formula_one_calendar/shared_export.dart';
 import 'package:formula_one_calendar/views/constructor_details_view.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lottie/lottie.dart';
 
 class ConstructorsScreen extends StatefulWidget {
   @override
@@ -65,8 +66,11 @@ class _ConstructorsScreenState extends State<ConstructorsScreen> {
                     );
                   },
                 )
-              : const Center(
-                  child: CircularProgressIndicator(),
+              : Center(
+                  child: Lottie.asset(
+                      height: MediaQuery.of(context).size.height * 0.20,
+                      width: MediaQuery.of(context).size.height * 0.20,
+                      'assets/lottie/loader_f1.json'),
                 ),
         );
       },

@@ -1,15 +1,12 @@
-import 'package:blurry/blurry.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:formula_one_calendar/features/circuits/cubit/circuit_cubit.dart';
-import 'package:formula_one_calendar/models/race.dart';
-import 'package:formula_one_calendar/network/race_repository.dart';
-import 'package:formula_one_calendar/shared_export.dart';
-import 'package:formula_one_calendar/viewmodels/race_viewmodel.dart';
 import 'package:latlong2/latlong.dart';
 
 class CircuitMapScreen extends StatefulWidget {
+  const CircuitMapScreen({super.key});
+
   @override
   _CircuitMapScreenState createState() => _CircuitMapScreenState();
 }
@@ -33,7 +30,7 @@ class _CircuitMapScreenState extends State<CircuitMapScreen> {
                     children: [
                       TileLayer(
                         urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                        subdomains: ['a', 'b', 'c'],
+                        subdomains: const ['a', 'b', 'c'],
                       ),
                       MarkerLayer(
                         markers: state.circuitLocations!.map((circuit) {
@@ -57,7 +54,7 @@ class _CircuitMapScreenState extends State<CircuitMapScreen> {
                                 ),
                                 width: 120,
                                 height: 75,
-                                child: Column(
+                                child: const Column(
                                   children: [
                                     Text(
                                       "🏁",

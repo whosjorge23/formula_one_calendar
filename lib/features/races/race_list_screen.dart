@@ -9,6 +9,7 @@ import 'package:formula_one_calendar/shared_export.dart';
 import 'package:formula_one_calendar/viewmodels/race_viewmodel.dart';
 import 'package:formula_one_calendar/views/race_details.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lottie/lottie.dart';
 
 class RaceListScreen extends StatefulWidget {
   @override
@@ -56,8 +57,11 @@ class _RaceListScreenState extends State<RaceListScreen> {
                     );
                   },
                 )
-              : const Center(
-                  child: CircularProgressIndicator(),
+              : Center(
+                  child: Lottie.asset(
+                      height: MediaQuery.of(context).size.height * 0.20,
+                      width: MediaQuery.of(context).size.height * 0.20,
+                      'assets/lottie/loader_f1.json'),
                 ),
         );
       },

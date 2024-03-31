@@ -127,9 +127,12 @@ GoRouter createGoRouter({
         pageBuilder: (context, state) {
           Map<String, Object?> driverDetails = state.extra as Map<String, Object?>;
           return NoTransitionPage(
-            child: DriverDetailsScreen(
-              selectedDriver: driverDetails['selectedDriver']! as String,
-              constructorColor: driverDetails['constructorColor']! as Color,
+            child: BlocProvider(
+              create: (context) => DriverCubit(),
+              child: DriverDetailsScreen(
+                selectedDriver: driverDetails['selectedDriver']! as String,
+                constructorColor: driverDetails['constructorColor']! as Color,
+              ),
             ),
           );
         },
