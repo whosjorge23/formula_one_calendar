@@ -10,15 +10,16 @@ import 'package:formula_one_calendar/features/drivers/driver_screen.dart';
 import 'package:formula_one_calendar/features/races/cubit/race_cubit.dart';
 import 'package:formula_one_calendar/features/races/race_details_screen.dart';
 import 'package:formula_one_calendar/features/races/race_list_screen.dart';
+import 'package:formula_one_calendar/features/results/cubit/result_cubit.dart';
+import 'package:formula_one_calendar/features/results/result_details_screen.dart';
+import 'package:formula_one_calendar/features/results/result_list_screen.dart';
 import 'package:formula_one_calendar/models/constructor.dart';
 import 'package:formula_one_calendar/models/race.dart';
+import 'package:formula_one_calendar/models/result.dart' as resultModel;
 import 'package:formula_one_calendar/shell/cubit/home_screen_shell_cubit.dart';
 import 'package:formula_one_calendar/shell/home_screen_shell.dart';
-import 'package:formula_one_calendar/views/circuit_map_view.dart';
-import 'package:formula_one_calendar/views/constructor_details_view.dart';
-import 'package:formula_one_calendar/views/constructors_view.dart';
+
 import 'package:formula_one_calendar/views/credits_view.dart';
-import 'package:formula_one_calendar/views/race_list_view.dart';
 
 import 'package:go_router/go_router.dart';
 
@@ -29,6 +30,8 @@ class ScreenPaths {
   static String constructorList = '/constructorList';
   static String constructorDetails = '/constructorDetails';
   static String driverDetails = '/driverDetails';
+  static String resultList = '/resultList';
+  static String resultDetails = '/resultDetails';
   static String credits = '/credits';
 }
 
@@ -91,6 +94,17 @@ GoRouter createGoRouter({
             },
           ),
           GoRoute(
+            path: ScreenPaths.resultList,
+            pageBuilder: (context, state) {
+              return NoTransitionPage(
+                child: BlocProvider(
+                  create: (context) => ResultCubit()..getAllRacesResults(),
+                  child: ResultListScreen(),
+                ),
+              );
+            },
+          ),
+          GoRoute(
             path: ScreenPaths.credits,
             pageBuilder: (context, state) {
               return NoTransitionPage(
@@ -132,6 +146,21 @@ GoRouter createGoRouter({
               child: DriverDetailsScreen(
                 selectedDriver: driverDetails['selectedDriver']! as String,
                 constructorColor: driverDetails['constructorColor']! as Color,
+              ),
+            ),
+          );
+        },
+      ),
+      GoRoute(
+        path: ScreenPaths.resultDetails,
+        pageBuilder: (context, state) {
+          Map<String, Object?> resultDetails = state.extra as Map<String, Object?>;
+          return NoTransitionPage(
+            child: BlocProvider(
+              create: (context) => DriverCubit(),
+              child: ResultDetailsScreen(
+                resultDetails: resultDetails['resultDetails'] as List<resultModel.Result>,
+                raceName: resultDetails['raceName']! as String,
               ),
             ),
           );

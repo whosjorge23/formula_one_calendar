@@ -93,13 +93,12 @@ class Race {
   String get getDateFormatted => formatDate(date) ?? "";
 
   String formatTimeInGMT(String? timeString) {
-    final format = DateFormat("HH:mm:ss'Z'", 'en_US');
-    // format.timeZone = 'GMT';
-
+    final utcFormat = DateFormat("HH:mm:ss'Z'", 'en_US');
     try {
-      final date = format.parse(timeString ?? "");
-      final formatter = DateFormat('HH:mm');
-      return formatter.format(date.toLocal());
+      final utcDate = utcFormat.parseUtc(timeString ?? "");
+      final localDate = utcDate.toLocal();
+      final localFormat = DateFormat('HH:mm');
+      return localFormat.format(localDate);
     } catch (e) {
       return '🤷‍♂️🤷‍♂️';
     }
@@ -232,6 +231,7 @@ class Location {
     'Netherlands': '🇳🇱',
     'Singapore': '🇸🇬',
     'Japan': '🇯🇵',
+    'China': '🇨🇳',
     'Qatar': '🇶🇦',
     'Mexico': '🇲🇽',
     'Brazil': '🇧🇷',

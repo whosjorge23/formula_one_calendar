@@ -33,6 +33,10 @@ class _HomeScreenShellState extends State<HomeScreenShell> with TickerProviderSt
       context.read<HomeScreenShellCubit>().updateIndex(index);
     }
     if (index == 3) {
+      context.go(ScreenPaths.resultList);
+      context.read<HomeScreenShellCubit>().updateIndex(index);
+    }
+    if (index == 4) {
       context.go(ScreenPaths.credits);
       context.read<HomeScreenShellCubit>().updateIndex(index);
     }
@@ -100,6 +104,10 @@ class _HomeScreenShellState extends State<HomeScreenShell> with TickerProviderSt
               bottomNavigationBarItem(
                 Icons.drive_eta,
                 'Teams\n',
+              ),
+              bottomNavigationBarItem(
+                Icons.list,
+                'Results\n',
               ),
               bottomNavigationBarItem(
                 Icons.person,

@@ -17,8 +17,7 @@ class CreditsView extends StatelessWidget {
                   // SectionHeader(title: 'Application'),
                   InfoRowView(name: 'Developer', content: 'Giorgio Giannotta'),
                   InfoRowView(name: 'Platforms', content: 'iOS, Web & Flutter'),
-                  InfoRowView(
-                      name: 'Languages', content: 'Swift, Python, JS, Dart'),
+                  InfoRowView(name: 'Languages', content: 'Swift, Python, JS, Dart'),
                   InfoRowView(
                     name: 'Website',
                     linkLabel: 'Softbay X',
