@@ -5,6 +5,7 @@ import 'package:formula_one_calendar/models/constructor.dart';
 import 'package:formula_one_calendar/routes/go_router_config.dart';
 import 'package:formula_one_calendar/shared_export.dart';
 import 'package:formula_one_calendar/views/constructor_details_view.dart';
+import 'package:formula_one_calendar/widgets/team_card.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 
@@ -31,39 +32,55 @@ class _ConstructorsScreenState extends State<ConstructorsScreen> {
               ? ListView.builder(
                   itemCount: state.constructors?.length,
                   itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text(
-                        state.constructors?[index].name ?? "-",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      subtitle: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                              'Nationality: ${state.constructors?[index].nationality} ${state.constructors?[index].getConstructorFlag}'),
-                          Text('Power Unit: ${state.constructors?[index].getConstructorPowerUnit}'),
-                          Text(
-                              'Drivers: ${state.constructors?[index].getConstructorDrivers[0]} - ${state.constructors?[index].getConstructorDrivers[1]}'),
-                        ],
-                      ),
-                      trailing: SizedBox(
-                        width: 60,
-                        height: 60,
-                        child: Image.network(
-                          state.constructors![index].getConstructorImage,
-                          errorBuilder: (context, error, stackTrace) => Icon(Icons.image_not_supported),
-                        ),
+                    return GestureDetector(
+                      child: TeamCard(
+                        teamColor: state.constructors?[index].getConstructorColor ?? Colors.white,
+                        teamName: state.constructors?[index].name ?? "-",
+                        teamNationality:
+                            '${state.constructors?[index].nationality} ${state.constructors?[index].getConstructorFlag}',
+                        teamPowerUnit: '${state.constructors?[index].getConstructorPowerUnit}',
+                        teamLogo: state.constructors![index].getConstructorImage,
+                        teamCar: state.constructors![index].getConstructorCarImage,
+                        teamDrivers:
+                            '${state.constructors?[index].getConstructorDrivers[0]}\n${state.constructors?[index].getConstructorDrivers[1]}',
                       ),
                       onTap: () {
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => ConstructorDetailsView(constructor: constructor),
-                        //   ),
-                        // );
                         context.push(ScreenPaths.constructorDetails, extra: state.constructors?[index]);
                       },
                     );
+                    // return ListTile(
+                    //   title: Text(
+                    //     state.constructors?[index].name ?? "-",
+                    //     style: TextStyle(fontWeight: FontWeight.bold),
+                    //   ),
+                    //   subtitle: Column(
+                    //     crossAxisAlignment: CrossAxisAlignment.start,
+                    //     children: [
+                    //       Text(
+                    //           'Nationality: ${state.constructors?[index].nationality} ${state.constructors?[index].getConstructorFlag}'),
+                    //       Text('Power Unit: ${state.constructors?[index].getConstructorPowerUnit}'),
+                    //       Text(
+                    //           'Drivers: ${state.constructors?[index].getConstructorDrivers[0]} - ${state.constructors?[index].getConstructorDrivers[1]}'),
+                    //     ],
+                    //   ),
+                    //   trailing: SizedBox(
+                    //     width: 60,
+                    //     height: 60,
+                    //     child: Image.network(
+                    //       state.constructors![index].getConstructorImage,
+                    //       errorBuilder: (context, error, stackTrace) => Icon(Icons.image_not_supported),
+                    //     ),
+                    //   ),
+                    //   onTap: () {
+                    //     // Navigator.push(
+                    //     //   context,
+                    //     //   MaterialPageRoute(
+                    //     //     builder: (context) => ConstructorDetailsView(constructor: constructor),
+                    //     //   ),
+                    //     // );
+                    //     context.push(ScreenPaths.constructorDetails, extra: state.constructors?[index]);
+                    //   },
+                    // );
                   },
                 )
               : Center(

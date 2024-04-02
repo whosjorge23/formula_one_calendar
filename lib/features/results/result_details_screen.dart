@@ -14,6 +14,8 @@ import 'package:formula_one_calendar/routes/go_router_config.dart';
 import 'package:formula_one_calendar/shared_export.dart';
 import 'package:formula_one_calendar/viewmodels/race_viewmodel.dart';
 import 'package:formula_one_calendar/views/race_details.dart';
+import 'package:formula_one_calendar/widgets/circuit_card.dart';
+import 'package:formula_one_calendar/widgets/result_driver_card.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 
@@ -33,39 +35,49 @@ class ResultDetailsScreen extends StatelessWidget {
           ? ListView.builder(
               itemCount: resultDetails?.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Image.network(
-                            resultDetails?[index].driver!.getDriverHelmetPic ?? "",
-                            height: 30,
-                            width: 30,
-                          ),
-                          Text(
-                              "${resultDetails?[index].driver?.familyName} - ${resultDetails?[index].constructor?.name}",
-                              style: TextStyle(fontWeight: FontWeight.bold)),
-                        ],
-                      ),
-                      Text("${resultDetails?[index].position}", style: TextStyle(fontSize: 24)),
-                    ],
-                  ),
-                  subtitle: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Status: ${resultDetails?[index].status ?? "-"}"),
-                          // Image.network(state.raceResults?[index].results?.first.driver?.getDriverHelmetPic)
-                        ],
-                      ),
-                    ],
-                  ),
-                  onTap: () {},
+                return ResultDriverCard(
+                  driverName:
+                      '${resultDetails?[index].driver?.givenName ?? "-"} ${resultDetails?[index].driver?.familyName ?? "-"}',
+                  teamName: '${resultDetails?[index].constructor?.name ?? "-"}',
+                  pointsDriver: '${resultDetails?[index].points ?? "-"}',
+                  driverCardPic: resultDetails?[index].driver!.getDriverCardPic ?? "",
+                  driverStatus: '${resultDetails?[index].status ?? "-"}',
+                  circuitRound: '${resultDetails?[index].position}',
+                  helmetPic: resultDetails?[index].driver!.getDriverHelmetPic ?? "",
                 );
+                // return ListTile(
+                //   title: Row(
+                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //     children: [
+                //       Row(
+                //         children: [
+                //           Image.network(
+                //             resultDetails?[index].driver!.getDriverHelmetPic ?? "",
+                //             height: 30,
+                //             width: 30,
+                //           ),
+                //           Text(
+                //               "${resultDetails?[index].driver?.familyName} - ${resultDetails?[index].constructor?.name}",
+                //               style: TextStyle(fontWeight: FontWeight.bold)),
+                //         ],
+                //       ),
+                //       Text("${resultDetails?[index].position}", style: TextStyle(fontSize: 24)),
+                //     ],
+                //   ),
+                //   subtitle: Row(
+                //     crossAxisAlignment: CrossAxisAlignment.start,
+                //     children: [
+                //       Column(
+                //         crossAxisAlignment: CrossAxisAlignment.start,
+                //         children: [
+                //           Text("Status: ${resultDetails?[index].status ?? "-"}"),
+                //           // Image.network(state.raceResults?[index].results?.first.driver?.getDriverHelmetPic)
+                //         ],
+                //       ),
+                //     ],
+                //   ),
+                //   onTap: () {},
+                // );
               },
             )
           : Center(

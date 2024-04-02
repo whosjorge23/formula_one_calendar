@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:formula_one_calendar/widgets/team_card.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CreditsView extends StatelessWidget {

@@ -80,36 +80,6 @@ Map<String, dynamic> _$RaceToJson(Race instance) => <String, dynamic>{
       'Results': instance.results,
     };
 
-Circuit _$CircuitFromJson(Map<String, dynamic> json) => Circuit(
-      circuitId: json['circuitId'] as String?,
-      url: json['url'] as String?,
-      circuitName: json['circuitName'] as String?,
-      location: json['Location'] == null
-          ? null
-          : Location.fromJson(json['Location'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$CircuitToJson(Circuit instance) => <String, dynamic>{
-      'circuitId': instance.circuitId,
-      'url': instance.url,
-      'circuitName': instance.circuitName,
-      'Location': instance.location,
-    };
-
-Location _$LocationFromJson(Map<String, dynamic> json) => Location(
-      lat: json['lat'] as String?,
-      long: json['long'] as String?,
-      locality: json['locality'] as String?,
-      country: json['country'] as String?,
-    );
-
-Map<String, dynamic> _$LocationToJson(Location instance) => <String, dynamic>{
-      'lat': instance.lat,
-      'long': instance.long,
-      'locality': instance.locality,
-      'country': instance.country,
-    };
-
 Result _$ResultFromJson(Map<String, dynamic> json) => Result(
       number: json['number'] as String?,
       position: json['position'] as String?,
@@ -120,7 +90,7 @@ Result _$ResultFromJson(Map<String, dynamic> json) => Result(
           : Driver.fromJson(json['Driver'] as Map<String, dynamic>),
       constructor: json['Constructor'] == null
           ? null
-          : Constructor.fromJson(json['Constructor'] as Map<String, dynamic>),
+          : Constructors.fromJson(json['Constructor'] as Map<String, dynamic>),
       grid: json['grid'] as String?,
       laps: json['laps'] as String?,
       status: json['status'] as String?,
@@ -144,21 +114,6 @@ Map<String, dynamic> _$ResultToJson(Result instance) => <String, dynamic>{
       'status': instance.status,
       'Time': instance.time,
       'FastestLap': instance.fastestLap,
-    };
-
-Constructor _$ConstructorFromJson(Map<String, dynamic> json) => Constructor(
-      constructorId: json['constructorId'] as String?,
-      url: json['url'] as String?,
-      name: json['name'] as String?,
-      nationality: json['nationality'] as String?,
-    );
-
-Map<String, dynamic> _$ConstructorToJson(Constructor instance) =>
-    <String, dynamic>{
-      'constructorId': instance.constructorId,
-      'url': instance.url,
-      'name': instance.name,
-      'nationality': instance.nationality,
     };
 
 FastestLap _$FastestLapFromJson(Map<String, dynamic> json) => FastestLap(

@@ -186,6 +186,8 @@ class Circuit {
         "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Las%20Vegas.png.transform/2col-retina/image.png",
     "Yas Marina Circuit":
         "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Abu%20Dhabi.png.transform/2col-retina/image.png",
+    "Shanghai International Circuit":
+        "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/China.png.transform/2col-retina/image.png",
   };
 }
 

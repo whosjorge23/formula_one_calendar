@@ -54,7 +54,7 @@ class _RaceDetailsScreenState extends State<RaceDetailsScreen> {
                 style: TextStyle(fontWeight: FontWeight.bold)),
             SizedBox(height: 10),
             Container(
-              color: Colors.black12,
+              color: Colors.black,
               child: Center(
                 child: Image.network(widget.race.circuit!.getCircuitPic, scale: 1.5),
               ),

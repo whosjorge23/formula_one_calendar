@@ -107,51 +107,51 @@ class Race {
   Map<String, dynamic> toJson() => _$RaceToJson(this);
 }
 
-@JsonSerializable()
-class Circuit {
-  @JsonKey(name: "circuitId")
-  String? circuitId;
-  @JsonKey(name: "url")
-  String? url;
-  @JsonKey(name: "circuitName")
-  String? circuitName;
-  @JsonKey(name: "Location")
-  Location? location;
-
-  Circuit({
-    this.circuitId,
-    this.url,
-    this.circuitName,
-    this.location,
-  });
-
-  factory Circuit.fromJson(Map<String, dynamic> json) => _$CircuitFromJson(json);
-
-  Map<String, dynamic> toJson() => _$CircuitToJson(this);
-}
-
-@JsonSerializable()
-class Location {
-  @JsonKey(name: "lat")
-  String? lat;
-  @JsonKey(name: "long")
-  String? long;
-  @JsonKey(name: "locality")
-  String? locality;
-  @JsonKey(name: "country")
-  String? country;
-
-  Location({
-    this.lat,
-    this.long,
-    this.locality,
-    this.country,
-  });
-
-  factory Location.fromJson(Map<String, dynamic> json) => _$LocationFromJson(json);
-
-  Map<String, dynamic> toJson() => _$LocationToJson(this);
-}
+// @JsonSerializable()
+// class Circuit {
+//   @JsonKey(name: "circuitId")
+//   String? circuitId;
+//   @JsonKey(name: "url")
+//   String? url;
+//   @JsonKey(name: "circuitName")
+//   String? circuitName;
+//   @JsonKey(name: "Location")
+//   Location? location;
+//
+//   Circuit({
+//     this.circuitId,
+//     this.url,
+//     this.circuitName,
+//     this.location,
+//   });
+//
+//   factory Circuit.fromJson(Map<String, dynamic> json) => _$CircuitFromJson(json);
+//
+//   Map<String, dynamic> toJson() => _$CircuitToJson(this);
+// }
+//
+// @JsonSerializable()
+// class Location {
+//   @JsonKey(name: "lat")
+//   String? lat;
+//   @JsonKey(name: "long")
+//   String? long;
+//   @JsonKey(name: "locality")
+//   String? locality;
+//   @JsonKey(name: "country")
+//   String? country;
+//
+//   Location({
+//     this.lat,
+//     this.long,
+//     this.locality,
+//     this.country,
+//   });
+//
+//   factory Location.fromJson(Map<String, dynamic> json) => _$LocationFromJson(json);
+//
+//   Map<String, dynamic> toJson() => _$LocationToJson(this);
+// }
 
 @JsonSerializable()
 class Result {
@@ -166,7 +166,7 @@ class Result {
   @JsonKey(name: "Driver")
   Driver? driver;
   @JsonKey(name: "Constructor")
-  Constructor? constructor;
+  Constructors? constructor;
   @JsonKey(name: "grid")
   String? grid;
   @JsonKey(name: "laps")
@@ -197,28 +197,28 @@ class Result {
   Map<String, dynamic> toJson() => _$ResultToJson(this);
 }
 
-@JsonSerializable()
-class Constructor {
-  @JsonKey(name: "constructorId")
-  String? constructorId;
-  @JsonKey(name: "url")
-  String? url;
-  @JsonKey(name: "name")
-  String? name;
-  @JsonKey(name: "nationality")
-  String? nationality;
-
-  Constructor({
-    this.constructorId,
-    this.url,
-    this.name,
-    this.nationality,
-  });
-
-  factory Constructor.fromJson(Map<String, dynamic> json) => _$ConstructorFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ConstructorToJson(this);
-}
+// @JsonSerializable()
+// class Constructor {
+//   @JsonKey(name: "constructorId")
+//   String? constructorId;
+//   @JsonKey(name: "url")
+//   String? url;
+//   @JsonKey(name: "name")
+//   String? name;
+//   @JsonKey(name: "nationality")
+//   String? nationality;
+//
+//   Constructor({
+//     this.constructorId,
+//     this.url,
+//     this.name,
+//     this.nationality,
+//   });
+//
+//   factory Constructor.fromJson(Map<String, dynamic> json) => _$ConstructorFromJson(json);
+//
+//   Map<String, dynamic> toJson() => _$ConstructorToJson(this);
+// }
 
 // @JsonSerializable()
 // class Driver {
