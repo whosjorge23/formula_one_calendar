@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:formula_one_calendar/widgets/team_card.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CreditsView extends StatelessWidget {
@@ -17,8 +18,7 @@ class CreditsView extends StatelessWidget {
                   // SectionHeader(title: 'Application'),
                   InfoRowView(name: 'Developer', content: 'Giorgio Giannotta'),
                   InfoRowView(name: 'Platforms', content: 'iOS, Web & Flutter'),
-                  InfoRowView(
-                      name: 'Languages', content: 'Swift, Python, JS, Dart'),
+                  InfoRowView(name: 'Languages', content: 'Swift, Python, JS, Dart'),
                   InfoRowView(
                     name: 'Website',
                     linkLabel: 'Softbay X',
