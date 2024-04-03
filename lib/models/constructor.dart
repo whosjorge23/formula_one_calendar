@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:formula_one_calendar/shared_export.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'constructor.g.dart';
@@ -259,15 +260,15 @@ class Constructors {
   };
 
   static Map<String, Color> constructorColor = {
-    'Sauber': const Color(0xFF52E252),
-    'RB F1 Team': const Color(0xFF6692FF),
-    'Alpine F1 Team': const Color(0xFF0093CC),
-    'Aston Martin': const Color(0xFF229971),
-    'Ferrari': const Color(0xFFE80020),
-    'Haas F1 Team': const Color(0xFFB6BABD),
-    'McLaren': const Color(0xFFFF8000),
-    'Mercedes': const Color(0xFF27F4D2),
-    'Red Bull': const Color(0xFF3671C6),
-    'Williams': const Color(0xFF64C4FF),
+    'Sauber': appColors.greenSauber,
+    'RB F1 Team': appColors.blueRB,
+    'Alpine F1 Team': appColors.blueAlpine,
+    'Aston Martin': appColors.greenAstonMartin,
+    'Ferrari': appColors.redFerrari,
+    'Haas F1 Team': appColors.greyHaas,
+    'McLaren': appColors.orangeMcLaren,
+    'Mercedes': appColors.aquamarineMercedes,
+    'Red Bull': appColors.blueRedBull,
+    'Williams': appColors.blueWilliams,
   };
 }

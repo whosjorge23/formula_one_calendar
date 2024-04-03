@@ -58,12 +58,13 @@ class _DriverDetailsScreenState extends State<DriverDetailsScreen> {
                       ),
                       // Display driver information
                       Text("Number: ${state.driver!.permanentNumber} ${state.driver!.getDriverFlag ?? "-"}",
-                          style: TextStyle(fontSize: 24)),
+                          style: Theme.of(context).textTheme.titleLarge),
                       Text("Name: ${state.driver!.givenName} ${state.driver!.familyName} ${state.driver!.code}",
-                          style: TextStyle(fontSize: 18)),
+                          style: Theme.of(context).textTheme.titleLarge),
                       Text("Nationality: ${state.driver!.nationality} ${state.driver!.getDriverFlag ?? "-"}",
-                          style: TextStyle(fontSize: 18)),
-                      Text("Date of birth: ${state.driver!.dateOfBirth}", style: TextStyle(fontSize: 18)),
+                          style: Theme.of(context).textTheme.titleLarge),
+                      Text("Date of birth: ${state.driver!.dateOfBirth}",
+                          style: Theme.of(context).textTheme.titleLarge),
                       // Display driver helmet
                       Image.network(
                         state.driver!.getDriverHelmetPic,

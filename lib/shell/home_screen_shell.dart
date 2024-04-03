@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formula_one_calendar/routes/go_router_config.dart';
+import 'package:formula_one_calendar/shared_export.dart';
 import 'package:formula_one_calendar/shell/cubit/home_screen_shell_cubit.dart';
 import 'package:go_router/go_router.dart';
 
@@ -48,7 +49,7 @@ class _HomeScreenShellState extends State<HomeScreenShell> with TickerProviderSt
         children: [
           Icon(
             iconData,
-            color: Colors.blue,
+            color: appColors.redFerrari,
           ),
           const SizedBox(
             height: 4,
@@ -56,7 +57,7 @@ class _HomeScreenShellState extends State<HomeScreenShell> with TickerProviderSt
           Text(
             label,
             textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.blue),
+            style: TextStyle(color: appColors.redFerrari),
           )
         ],
       ),
@@ -64,7 +65,7 @@ class _HomeScreenShellState extends State<HomeScreenShell> with TickerProviderSt
         children: [
           Icon(
             iconData,
-            color: Colors.black45,
+            color: appColors.greyHaas,
           ),
           const SizedBox(
             height: 4,
@@ -72,7 +73,7 @@ class _HomeScreenShellState extends State<HomeScreenShell> with TickerProviderSt
           Text(
             label,
             textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.black45),
+            style: TextStyle(color: appColors.greyHaas),
           )
         ],
       ),
@@ -91,7 +92,6 @@ class _HomeScreenShellState extends State<HomeScreenShell> with TickerProviderSt
           body: widget.child,
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.white,
             items: <BottomNavigationBarItem>[
               bottomNavigationBarItem(
                 Icons.flag_outlined,

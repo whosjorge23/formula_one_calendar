@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:formula_one_calendar/routes/go_router_config.dart';
 import 'package:formula_one_calendar/shared_export.dart';
+import 'package:formula_one_calendar/theme/theme_data.dart';
 import 'package:go_router/go_router.dart';
 
 class MainApp extends StatelessWidget {
@@ -35,6 +36,7 @@ class __MyAppState extends State<_MyApp> {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       routerConfig: _goRouter,
+      theme: lightTheme,
       builder: (context, child) {
         return ScrollConfiguration(
           behavior: DisableOverScroll(),

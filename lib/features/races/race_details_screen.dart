@@ -43,15 +43,15 @@ class _RaceDetailsScreenState extends State<RaceDetailsScreen> {
               children: [
                 Text(
                   'Date: ${widget.race.getDateFormatted ?? "-"}',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.titleLarge,
                 ),
-                Text('Time: ${widget.race.getTimeGMT ?? "-"}', style: TextStyle(fontWeight: FontWeight.bold)),
+                Text('Time: ${widget.race.getTimeGMT ?? "-"}', style: Theme.of(context).textTheme.titleLarge),
               ],
             ),
-            Text('Circuit: ${widget.race.circuit?.circuitName}', style: TextStyle(fontWeight: FontWeight.bold)),
+            Text('Circuit: ${widget.race.circuit?.circuitName}', style: Theme.of(context).textTheme.titleLarge),
             Text(
                 'Location: ${widget.race.circuit?.location?.locality}, ${widget.race.circuit?.location?.country} ${widget.race.circuit?.location?.getCountryFlag ?? "-"}',
-                style: TextStyle(fontWeight: FontWeight.bold)),
+                style: Theme.of(context).textTheme.titleLarge),
             SizedBox(height: 10),
             Container(
               color: Colors.black,
