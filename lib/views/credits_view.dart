@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:formula_one_calendar/shared_export.dart';
 import 'package:formula_one_calendar/widgets/team_card.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -92,9 +93,12 @@ class InfoRowView extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 4.0),
       child: ListTile(
-        title: Text(name, style: TextStyle(color: Colors.grey)),
+        title: Text(name, style: appTextStyle.getFormulaOne().copyWith(color: appColors.greyHaas)),
         trailing: content != null
-            ? Text(content!)
+            ? Text(
+                content!,
+                style: Theme.of(context).textTheme.titleSmall,
+              )
             : linkLabel != null && linkDestination != null
                 ? Row(
                     mainAxisSize: MainAxisSize.min,
@@ -105,7 +109,7 @@ class InfoRowView extends StatelessWidget {
                         },
                         child: Text(
                           linkLabel!,
-                          style: TextStyle(color: Colors.red),
+                          style: Theme.of(context).textTheme.titleSmall?.copyWith(color: appColors.redFerrari),
                         ),
                       ),
                     ],

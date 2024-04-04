@@ -6,9 +6,12 @@ ThemeData lightTheme = ThemeData(
   //APPBAR
   appBarTheme: AppBarTheme(
     backgroundColor: appColors.black,
+    titleTextStyle: appTextStyle.getFormulaOne().copyWith(fontSize: 20),
   ),
   textTheme: TextTheme(
-    titleLarge: TextStyle(color: appColors.white),
+    titleSmall: appTextStyle.getQuicksand().copyWith(color: appColors.white),
+    titleMedium: appTextStyle.getQuicksand().copyWith(color: appColors.white),
+    titleLarge: appTextStyle.getQuicksand().copyWith(color: appColors.white),
   ),
   // //ELEVATED BUTTON
   // elevatedButtonTheme: ElevatedButtonThemeData(
@@ -41,7 +44,7 @@ ThemeData darkTheme = ThemeData(
     backgroundColor: appColors.black,
   ),
   textTheme: TextTheme(
-    titleLarge: TextStyle(color: appColors.white),
+    titleLarge: appTextStyle.getQuicksand().copyWith(color: appColors.white),
   ),
   // //ELEVATED BUTTON
   // elevatedButtonTheme: ElevatedButtonThemeData(

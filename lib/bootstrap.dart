@@ -5,8 +5,8 @@ import 'package:formula_one_calendar/network/driver_repository.dart';
 import 'package:formula_one_calendar/network/race_repository.dart';
 import 'package:formula_one_calendar/network/result_repository.dart';
 import 'package:formula_one_calendar/service/context_service.dart';
-import 'package:formula_one_calendar/service/images_service.dart';
 import 'package:formula_one_calendar/theme/app_colors.dart';
+import 'package:formula_one_calendar/theme/app_text_styles.dart';
 
 import 'package:get_it/get_it.dart';
 
@@ -35,7 +35,7 @@ void _registerSingletons() {
   GetIt.I.registerSingleton<ResultRepository>(ResultRepository());
 
   //Services
-  GetIt.I.registerSingleton<ImagesService>(ImagesService());
+  GetIt.I.registerLazySingleton<AppTextStyle>(() => AppTextStyle());
   GetIt.I.registerLazySingleton<AppColors>(() => AppColors());
 }
 
