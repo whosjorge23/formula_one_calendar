@@ -1,7 +1,10 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formula_one_calendar/features/drivers/cubit/driver_cubit.dart';
 import 'package:formula_one_calendar/models/constructor.dart';
+import 'package:formula_one_calendar/models/driver.dart';
 import 'package:formula_one_calendar/routes/go_router_config.dart';
 import 'package:formula_one_calendar/viewmodels/constructor_viewmodel.dart';
 import 'package:formula_one_calendar/views/driver_view.dart';
@@ -49,9 +52,18 @@ class ConstructorDetailsScreenState extends State<ConstructorDetailsScreen> {
                   style: Theme.of(context).textTheme.titleLarge),
               Text('Drivers: ', style: Theme.of(context).textTheme.titleLarge),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  DriverButton(constructor: widget.constructor, driverNum: 0),
-                  DriverButton(constructor: widget.constructor, driverNum: 1),
+                  DriverButton(
+                    constructor: widget.constructor,
+                    driverNum: 0,
+                    isFlipped: true,
+                  ),
+                  DriverButton(
+                    constructor: widget.constructor,
+                    driverNum: 1,
+                    isFlipped: false,
+                  ),
                 ],
               ),
               AspectRatio(
@@ -74,15 +86,35 @@ class DriverButton extends StatelessWidget {
     super.key,
     required this.constructor,
     required this.driverNum,
+    required this.isFlipped,
   });
 
   final Constructors constructor;
   final int driverNum;
+  final bool isFlipped;
+
+  String getDriverPic() {
+    Driver driver = Driver(driverId: constructor.getConstructorDriversID[driverNum]);
+    return driver.getDriverCardPic;
+  }
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      child: Text(constructor.getConstructorDrivers[driverNum], style: Theme.of(context).textTheme.titleLarge),
+      child: Column(
+        children: [
+          Transform(
+            alignment: Alignment.center,
+            transform: Matrix4.rotationY(isFlipped ? pi : 0),
+            child: Image.network(
+              getDriverPic(),
+              scale: 2,
+              errorBuilder: (context, error, stackTrace) => const Icon(Icons.error),
+            ),
+          ),
+          Text(constructor.getConstructorDrivers[driverNum], style: Theme.of(context).textTheme.titleLarge),
+        ],
+      ),
       onPressed: () {
         context.push(ScreenPaths.driverDetails, extra: {
           "selectedDriver": constructor.getConstructorDriversID[driverNum],
