@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:formula_one_calendar/features/circuits/cubit/circuit_cubit.dart';
+import 'package:formula_one_calendar/shared_export.dart';
+import 'package:go_router/go_router.dart';
 import 'package:latlong2/latlong.dart';
 
 class CircuitMapScreen extends StatefulWidget {
@@ -29,8 +31,8 @@ class _CircuitMapScreenState extends State<CircuitMapScreen> {
                     ),
                     children: [
                       TileLayer(
-                        urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                        subdomains: const ['a', 'b', 'c'],
+                        urlTemplate: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                        subdomains: const ['a', 'b', 'c', 'd'],
                       ),
                       MarkerLayer(
                         markers: state.circuitLocations!.map((circuit) {
@@ -39,7 +41,7 @@ class _CircuitMapScreenState extends State<CircuitMapScreen> {
                                 double.tryParse(circuit.location?.long ?? "0.0") ?? 0),
                             builder: (context) => GestureDetector(
                               onTap: () {
-                                _dialogBuilder(
+                                _showSimulator(
                                   context,
                                   title: '${circuit.circuitName}',
                                   locality: '${circuit.location?.locality}',
@@ -49,7 +51,7 @@ class _CircuitMapScreenState extends State<CircuitMapScreen> {
                               },
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.7),
+                                  // color: Colors.white.withOpacity(0.7),
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 width: 120,
@@ -77,6 +79,85 @@ class _CircuitMapScreenState extends State<CircuitMapScreen> {
                     child: CircularProgressIndicator(),
                   ),
           ],
+        );
+      },
+    );
+  }
+
+  _showSimulator(BuildContext context,
+      {required String title, required String locality, required String country, required String imageUrl}) {
+    showModalBottomSheet<void>(
+      isScrollControlled: true,
+      enableDrag: false,
+      context: context,
+      builder: (context) {
+        return Container(
+          color: appColors.black,
+          height: 400,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Container(
+                padding: const EdgeInsets.only(
+                  top: 16,
+                  left: 16,
+                  right: 16,
+                  // bottom: 16,
+                ),
+                color: appColors.black,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "$locality $country",
+                      style: appTextStyle.getFormulaOne().copyWith(color: appColors.white),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        context.pop();
+                      },
+                      child: Container(
+                          decoration: BoxDecoration(
+                            color: appColors.white,
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(24),
+                            ),
+                          ),
+                          child: Icon(Icons.close)),
+                    )
+                  ],
+                ),
+              ),
+              Divider(
+                color: appColors.white,
+              ),
+              Expanded(
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(16),
+                      topRight: Radius.circular(16),
+                    ),
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text("$locality $country"),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          // color: Colors.grey,
+                          child: Image.network(imageUrl, scale: 0.8),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         );
       },
     );
