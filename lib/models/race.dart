@@ -143,6 +143,12 @@ class Circuit {
 
   String get getCircuitFirstGrandPrix => circuitFirstGrandPrix[circuitName] ?? "";
 
+  String get getCircuitNumberLaps => circuitNumberLaps[circuitName] ?? "";
+
+  String get getCircuitLength => circuitLength[circuitName] ?? "";
+
+  String get getCircuitRaceDistance => circuitRaceDistance[circuitName] ?? "";
+
   static Map<String, String> circuitPic = {
     "Bahrain International Circuit":
         "https://media.formula1.com/image/upload/f_auto/q_auto/v1677245035/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Bahrain.png.transform/2col-retina/image.png",

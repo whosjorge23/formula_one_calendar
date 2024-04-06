@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:formula_one_calendar/features/circuits/cubit/circuit_cubit.dart';
+import 'package:formula_one_calendar/models/race.dart';
 import 'package:formula_one_calendar/shared_export.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:latlong2/latlong.dart';
 
@@ -28,6 +30,11 @@ class _CircuitMapScreenState extends State<CircuitMapScreen> {
                     options: MapOptions(
                       center: LatLng(42.6384261, 12.674297),
                       zoom: 5.0,
+                      maxZoom: 10.0,
+                      maxBounds: LatLngBounds(
+                        LatLng(-90, -180),
+                        LatLng(90, 180),
+                      ),
                     ),
                     children: [
                       TileLayer(
@@ -41,8 +48,9 @@ class _CircuitMapScreenState extends State<CircuitMapScreen> {
                                 double.tryParse(circuit.location?.long ?? "0.0") ?? 0),
                             builder: (context) => GestureDetector(
                               onTap: () {
-                                _showSimulator(
+                                _showCircuitDetails(
                                   context,
+                                  circuit: circuit,
                                   title: '${circuit.circuitName}',
                                   locality: '${circuit.location?.locality}',
                                   country: '${circuit.location?.country}',
@@ -84,8 +92,12 @@ class _CircuitMapScreenState extends State<CircuitMapScreen> {
     );
   }
 
-  _showSimulator(BuildContext context,
-      {required String title, required String locality, required String country, required String imageUrl}) {
+  _showCircuitDetails(BuildContext context,
+      {required Circuit circuit,
+      required String title,
+      required String locality,
+      required String country,
+      required String imageUrl}) {
     showModalBottomSheet<void>(
       isScrollControlled: true,
       enableDrag: false,
@@ -110,9 +122,18 @@ class _CircuitMapScreenState extends State<CircuitMapScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "$locality $country",
-                      style: appTextStyle.getFormulaOne().copyWith(color: appColors.white),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "${circuit.circuitName}",
+                          style: appTextStyle.getFormulaOne().copyWith(color: appColors.white),
+                        ),
+                        Text(
+                          "${circuit.location?.locality} ${circuit.location?.country}",
+                          style: appTextStyle.getFormulaOne().copyWith(color: appColors.greyHaas),
+                        ),
+                      ],
                     ),
                     GestureDetector(
                       onTap: () {
@@ -144,7 +165,6 @@ class _CircuitMapScreenState extends State<CircuitMapScreen> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text("$locality $country"),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
@@ -152,51 +172,31 @@ class _CircuitMapScreenState extends State<CircuitMapScreen> {
                           child: Image.network(imageUrl, scale: 0.8),
                         ),
                       ),
+                      Text(
+                        "First Grand Prix: ${circuit.getCircuitFirstGrandPrix}",
+                        style: appTextStyle.getFormulaOne().copyWith(color: appColors.white),
+                      ),
+                      const Gap(5),
+                      Text(
+                        "Number Laps: ${circuit.getCircuitNumberLaps}",
+                        style: appTextStyle.getFormulaOne().copyWith(color: appColors.white),
+                      ),
+                      const Gap(5),
+                      Text(
+                        "Circuit Length: ${circuit.getCircuitLength}",
+                        style: appTextStyle.getFormulaOne().copyWith(color: appColors.white),
+                      ),
+                      const Gap(5),
+                      Text(
+                        "Race Distance: ${circuit.getCircuitRaceDistance}",
+                        style: appTextStyle.getFormulaOne().copyWith(color: appColors.white),
+                      ),
                     ],
                   ),
                 ),
               ),
             ],
           ),
-        );
-      },
-    );
-  }
-
-  Future<void> _dialogBuilder(BuildContext context,
-      {required String title, required String locality, required String country, required String imageUrl}) {
-    return showDialog<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(title),
-          content: SizedBox(
-            height: 190,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text("$locality $country"),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    color: Colors.grey,
-                    child: Image.network(imageUrl, scale: 2),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          actions: <Widget>[
-            TextButton(
-              style: TextButton.styleFrom(
-                textStyle: Theme.of(context).textTheme.labelLarge,
-              ),
-              child: const Text('Ok'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
         );
       },
     );
