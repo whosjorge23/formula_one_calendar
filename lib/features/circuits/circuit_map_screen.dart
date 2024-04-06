@@ -46,7 +46,7 @@ class _CircuitMapScreenState extends State<CircuitMapScreen> {
                                   title: '${circuit.circuitName}',
                                   locality: '${circuit.location?.locality}',
                                   country: '${circuit.location?.country}',
-                                  imageUrl: circuit.getCircuitPic,
+                                  imageUrl: circuit.getCircuitDRSPic,
                                 );
                               },
                               child: Container(
