@@ -1,5 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:formula_one_calendar/shared_export.dart';
+import 'package:gap/gap.dart';
 
 class TeamCard extends StatelessWidget {
   const TeamCard({
@@ -29,17 +31,17 @@ class TeamCard extends StatelessWidget {
         height: 160,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          color: const Color(0xFF1C2023), // Replace with the exact color
+          color: const Color(0xFF1C2023),
         ),
         child: Stack(
           children: [
             Positioned(
-              right: 0, // Adjust the car's position if necessary
+              right: 0,
               top: 0,
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
+                  color: appColors.white,
+                  borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(8),
                   ),
                 ),
@@ -52,15 +54,15 @@ class TeamCard extends StatelessWidget {
               ),
             ),
             Positioned(
-              right: -90, // Adjust the position to make sure it's aligned correctly
+              right: -90,
               bottom: 0,
               child: CustomPaint(
-                size: const Size(280, 180), // New size for the trapezoid
+                size: const Size(280, 180),
                 painter: TrapezoidCustomPainter(teamColor),
               ),
             ),
             Positioned(
-              right: -70, // Adjust the car's position if necessary
+              right: -70,
               bottom: 0,
               child: Transform(
                 alignment: Alignment.center,
@@ -80,38 +82,36 @@ class TeamCard extends StatelessWidget {
                 children: [
                   Text(
                     teamName,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                    ),
+                    style: appTextStyle.getQuicksand().copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
                   ),
-                  SizedBox(height: 2),
+                  const Gap(2),
                   Text(
                     teamNationality,
-                    style: TextStyle(
-                      color: Colors.white.withOpacity(0.7),
-                      fontSize: 16,
-                    ),
+                    style: appTextStyle.getQuicksand().copyWith(
+                          color: Colors.white.withOpacity(0.7),
+                          fontSize: 16,
+                        ),
                   ),
-                  SizedBox(height: 2),
+                  const Gap(2),
                   Text(
                     teamPowerUnit,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                      fontWeight: FontWeight.w500,
-                    ),
+                    style: appTextStyle.getQuicksand().copyWith(
+                          color: Colors.white,
+                          fontSize: 30,
+                          fontWeight: FontWeight.w500,
+                        ),
                   ),
-                  SizedBox(
-                    height: 4,
-                  ),
+                  const Gap(4),
                   Text(
                     teamDrivers,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                    ),
+                    style: appTextStyle.getQuicksand().copyWith(
+                          color: Colors.white,
+                          fontSize: 16,
+                        ),
                   ),
                 ],
               ),

@@ -1,5 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:formula_one_calendar/shared_export.dart';
+import 'package:gap/gap.dart';
 
 class CircuitCard extends StatelessWidget {
   const CircuitCard({
@@ -27,24 +29,24 @@ class CircuitCard extends StatelessWidget {
         height: 160,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          color: const Color(0xFF1C2023), // Replace with the exact color
+          color: const Color(0xFF1C2023),
         ),
         child: Stack(
           children: [
             Positioned(
-              right: 8, // Adjust the car's position if necessary
+              right: 8,
               top: 8,
               child: Text(
                 circuitRound,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                  fontWeight: FontWeight.w500,
-                ),
+                style: appTextStyle.getQuicksand().copyWith(
+                      fontSize: 30,
+                      fontWeight: FontWeight.w500,
+                      color: appColors.white,
+                    ),
               ),
             ),
             Positioned(
-              right: 8, // Adjust the car's position if necessary
+              right: 8,
               bottom: 8,
               child: Transform(
                 alignment: Alignment.center,
@@ -64,40 +66,38 @@ class CircuitCard extends StatelessWidget {
                 children: [
                   Text(
                     circuitName,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                    ),
+                    style: appTextStyle.getQuicksand().copyWith(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: appColors.white,
+                        ),
                   ),
-                  SizedBox(height: 2),
+                  const Gap(2),
                   Text(
                     circuitPlace,
-                    style: TextStyle(
-                      color: Colors.white.withOpacity(0.7),
-                      fontSize: 16,
-                    ),
+                    style: appTextStyle.getQuicksand().copyWith(
+                          color: appColors.white.withOpacity(0.7),
+                          fontSize: 16,
+                        ),
                   ),
-                  SizedBox(height: 5),
+                  const Gap(5),
                   Text(
                     trackSchedule,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-                    ),
+                    style: appTextStyle.getQuicksand().copyWith(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          color: appColors.white,
+                        ),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
+                  const Gap(10),
                   Text(
                     circuitTrackName,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                    ),
+                    style: appTextStyle.getQuicksand().copyWith(
+                          fontSize: 16,
+                          color: appColors.white,
+                        ),
                   ),
-                  SizedBox(height: 10),
+                  const Gap(10),
                 ],
               ),
             ),

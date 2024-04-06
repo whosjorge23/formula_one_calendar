@@ -1,5 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:formula_one_calendar/shared_export.dart';
+import 'package:gap/gap.dart';
 
 class ResultDriverCard extends StatelessWidget {
   const ResultDriverCard({
@@ -29,12 +31,12 @@ class ResultDriverCard extends StatelessWidget {
         height: 160,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          color: const Color(0xFF1C2023), // Replace with the exact color
+          color: const Color(0xFF1C2023),
         ),
         child: Stack(
           children: [
             Positioned(
-              right: 8, // Adjust the car's position if necessary
+              right: 8,
               top: 8,
               child: Text(
                 circuitRound,
@@ -46,7 +48,7 @@ class ResultDriverCard extends StatelessWidget {
               ),
             ),
             Positioned(
-              right: 0, // Adjust the car's position if necessary
+              right: 0,
               bottom: 0,
               child: Transform(
                 alignment: Alignment.center,
@@ -68,11 +70,11 @@ class ResultDriverCard extends StatelessWidget {
                     children: [
                       Text(
                         driverName,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
+                        style: appTextStyle.getQuicksand().copyWith(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
                       ),
                       Transform(
                         alignment: Alignment.center,
@@ -84,34 +86,32 @@ class ResultDriverCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 2),
+                  const Gap(2),
                   Text(
                     teamName,
-                    style: TextStyle(
-                      color: Colors.white.withOpacity(0.7),
-                      fontSize: 16,
-                    ),
+                    style: appTextStyle.getQuicksand().copyWith(
+                          color: Colors.white.withOpacity(0.7),
+                          fontSize: 16,
+                        ),
                   ),
-                  SizedBox(height: 5),
+                  const Gap(5),
                   Text(
                     driverStatus,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-                    ),
+                    style: appTextStyle.getQuicksand().copyWith(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                        ),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
+                  const Gap(10),
                   Text(
                     pointsDriver,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                    ),
+                    style: appTextStyle.getQuicksand().copyWith(
+                          fontSize: 16,
+                          color: appColors.white,
+                        ),
                   ),
-                  SizedBox(height: 10),
+                  const Gap(10),
                 ],
               ),
             ),
