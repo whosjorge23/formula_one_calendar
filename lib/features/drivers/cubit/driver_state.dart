@@ -4,5 +4,6 @@ part of 'driver_cubit.dart';
 class DriverState with _$DriverState {
   const factory DriverState.initial({
     Driver? driver,
+    @Default(0) int driverPoints,
   }) = _Initial;
 }

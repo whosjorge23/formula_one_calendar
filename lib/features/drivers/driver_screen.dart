@@ -24,7 +24,10 @@ class _DriverDetailsScreenState extends State<DriverDetailsScreen> {
   }
 
   void fetchDriver() async {
+    if (!context.mounted) return;
     await context.read<DriverCubit>().getDriver(widget.selectedDriver);
+    if (!context.mounted) return;
+    await context.read<DriverCubit>().getDriverResults(widget.selectedDriver);
   }
 
   @override
@@ -65,6 +68,7 @@ class _DriverDetailsScreenState extends State<DriverDetailsScreen> {
                           style: Theme.of(context).textTheme.titleLarge),
                       Text("Date of birth: ${state.driver!.dateOfBirth}",
                           style: Theme.of(context).textTheme.titleLarge),
+                      Text("Points: ${state.driverPoints}", style: Theme.of(context).textTheme.titleLarge),
                       // Display driver helmet
                       Image.network(
                         state.driver!.getDriverHelmetPic,

@@ -130,8 +130,11 @@ GoRouter createGoRouter({
         pageBuilder: (context, state) {
           Constructors constructorDetails = state.extra as Constructors;
           return NoTransitionPage(
-            child: ConstructorDetailsScreen(
-              constructor: constructorDetails,
+            child: BlocProvider(
+              create: (context) => ConstructorCubit(),
+              child: ConstructorDetailsScreen(
+                constructor: constructorDetails,
+              ),
             ),
           );
         },

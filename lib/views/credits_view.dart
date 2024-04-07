@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:formula_one_calendar/network/result_repository.dart';
 import 'package:formula_one_calendar/shared_export.dart';
 import 'package:formula_one_calendar/widgets/team_card.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -9,6 +10,12 @@ class CreditsView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Developer Credits'),
+        // actions: [
+        //   IconButton(
+        //       onPressed: () async {
+        //       },
+        //       icon: Icon(Icons.abc))
+        // ],
       ),
       body: SingleChildScrollView(
         child: Column(

@@ -17,19 +17,20 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$DriverState {
   Driver? get driver => throw _privateConstructorUsedError;
+  int get driverPoints => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Driver? driver) initial,
+    required TResult Function(Driver? driver, int driverPoints) initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Driver? driver)? initial,
+    TResult? Function(Driver? driver, int driverPoints)? initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Driver? driver)? initial,
+    TResult Function(Driver? driver, int driverPoints)? initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -61,7 +62,7 @@ abstract class $DriverStateCopyWith<$Res> {
           DriverState value, $Res Function(DriverState) then) =
       _$DriverStateCopyWithImpl<$Res, DriverState>;
   @useResult
-  $Res call({Driver? driver});
+  $Res call({Driver? driver, int driverPoints});
 }
 
 /// @nodoc
@@ -78,12 +79,17 @@ class _$DriverStateCopyWithImpl<$Res, $Val extends DriverState>
   @override
   $Res call({
     Object? driver = freezed,
+    Object? driverPoints = null,
   }) {
     return _then(_value.copyWith(
       driver: freezed == driver
           ? _value.driver
           : driver // ignore: cast_nullable_to_non_nullable
               as Driver?,
+      driverPoints: null == driverPoints
+          ? _value.driverPoints
+          : driverPoints // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -96,7 +102,7 @@ abstract class _$$InitialImplCopyWith<$Res>
       __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Driver? driver});
+  $Res call({Driver? driver, int driverPoints});
 }
 
 /// @nodoc
@@ -111,12 +117,17 @@ class __$$InitialImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? driver = freezed,
+    Object? driverPoints = null,
   }) {
     return _then(_$InitialImpl(
       driver: freezed == driver
           ? _value.driver
           : driver // ignore: cast_nullable_to_non_nullable
               as Driver?,
+      driverPoints: null == driverPoints
+          ? _value.driverPoints
+          : driverPoints // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -124,14 +135,17 @@ class __$$InitialImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InitialImpl implements _Initial {
-  const _$InitialImpl({this.driver});
+  const _$InitialImpl({this.driver, this.driverPoints = 0});
 
   @override
   final Driver? driver;
+  @override
+  @JsonKey()
+  final int driverPoints;
 
   @override
   String toString() {
-    return 'DriverState.initial(driver: $driver)';
+    return 'DriverState.initial(driver: $driver, driverPoints: $driverPoints)';
   }
 
   @override
@@ -139,11 +153,13 @@ class _$InitialImpl implements _Initial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
-            (identical(other.driver, driver) || other.driver == driver));
+            (identical(other.driver, driver) || other.driver == driver) &&
+            (identical(other.driverPoints, driverPoints) ||
+                other.driverPoints == driverPoints));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, driver);
+  int get hashCode => Object.hash(runtimeType, driver, driverPoints);
 
   @JsonKey(ignore: true)
   @override
@@ -154,27 +170,27 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Driver? driver) initial,
+    required TResult Function(Driver? driver, int driverPoints) initial,
   }) {
-    return initial(driver);
+    return initial(driver, driverPoints);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Driver? driver)? initial,
+    TResult? Function(Driver? driver, int driverPoints)? initial,
   }) {
-    return initial?.call(driver);
+    return initial?.call(driver, driverPoints);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Driver? driver)? initial,
+    TResult Function(Driver? driver, int driverPoints)? initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(driver);
+      return initial(driver, driverPoints);
     }
     return orElse();
   }
@@ -209,10 +225,13 @@ class _$InitialImpl implements _Initial {
 }
 
 abstract class _Initial implements DriverState {
-  const factory _Initial({final Driver? driver}) = _$InitialImpl;
+  const factory _Initial({final Driver? driver, final int driverPoints}) =
+      _$InitialImpl;
 
   @override
   Driver? get driver;
+  @override
+  int get driverPoints;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>

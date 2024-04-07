@@ -19,4 +19,21 @@ class DriverCubit extends Cubit<DriverState> {
       debugPrint(e.toString());
     }
   }
+
+  Future<void> getDriverResults(String? driverId) async {
+    try {
+      if (driverId != null) {
+        int driverPoints = 0;
+        final constructorResult = await resultRepository.driverResults(driverId);
+        if (constructorResult == null) return;
+        for (var race in constructorResult) {
+          if (race.results == null) return;
+          driverPoints += (int.parse(race.results![0].points!));
+        }
+        emit(state.copyWith(driverPoints: driverPoints));
+      }
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
 }

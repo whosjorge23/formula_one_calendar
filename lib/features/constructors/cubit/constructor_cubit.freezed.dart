@@ -17,19 +17,24 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ConstructorState {
   List<Constructors>? get constructors => throw _privateConstructorUsedError;
+  int get constructorsPoints => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Constructors>? constructors) initial,
+    required TResult Function(
+            List<Constructors>? constructors, int constructorsPoints)
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Constructors>? constructors)? initial,
+    TResult? Function(List<Constructors>? constructors, int constructorsPoints)?
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Constructors>? constructors)? initial,
+    TResult Function(List<Constructors>? constructors, int constructorsPoints)?
+        initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -61,7 +66,7 @@ abstract class $ConstructorStateCopyWith<$Res> {
           ConstructorState value, $Res Function(ConstructorState) then) =
       _$ConstructorStateCopyWithImpl<$Res, ConstructorState>;
   @useResult
-  $Res call({List<Constructors>? constructors});
+  $Res call({List<Constructors>? constructors, int constructorsPoints});
 }
 
 /// @nodoc
@@ -78,12 +83,17 @@ class _$ConstructorStateCopyWithImpl<$Res, $Val extends ConstructorState>
   @override
   $Res call({
     Object? constructors = freezed,
+    Object? constructorsPoints = null,
   }) {
     return _then(_value.copyWith(
       constructors: freezed == constructors
           ? _value.constructors
           : constructors // ignore: cast_nullable_to_non_nullable
               as List<Constructors>?,
+      constructorsPoints: null == constructorsPoints
+          ? _value.constructorsPoints
+          : constructorsPoints // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -96,7 +106,7 @@ abstract class _$$InitialImplCopyWith<$Res>
       __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Constructors>? constructors});
+  $Res call({List<Constructors>? constructors, int constructorsPoints});
 }
 
 /// @nodoc
@@ -111,12 +121,17 @@ class __$$InitialImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? constructors = freezed,
+    Object? constructorsPoints = null,
   }) {
     return _then(_$InitialImpl(
       constructors: freezed == constructors
           ? _value._constructors
           : constructors // ignore: cast_nullable_to_non_nullable
               as List<Constructors>?,
+      constructorsPoints: null == constructorsPoints
+          ? _value.constructorsPoints
+          : constructorsPoints // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -124,7 +139,8 @@ class __$$InitialImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InitialImpl implements _Initial {
-  const _$InitialImpl({final List<Constructors>? constructors})
+  const _$InitialImpl(
+      {final List<Constructors>? constructors, this.constructorsPoints = 0})
       : _constructors = constructors;
 
   final List<Constructors>? _constructors;
@@ -138,8 +154,12 @@ class _$InitialImpl implements _Initial {
   }
 
   @override
+  @JsonKey()
+  final int constructorsPoints;
+
+  @override
   String toString() {
-    return 'ConstructorState.initial(constructors: $constructors)';
+    return 'ConstructorState.initial(constructors: $constructors, constructorsPoints: $constructorsPoints)';
   }
 
   @override
@@ -148,12 +168,14 @@ class _$InitialImpl implements _Initial {
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
             const DeepCollectionEquality()
-                .equals(other._constructors, _constructors));
+                .equals(other._constructors, _constructors) &&
+            (identical(other.constructorsPoints, constructorsPoints) ||
+                other.constructorsPoints == constructorsPoints));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_constructors));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_constructors), constructorsPoints);
 
   @JsonKey(ignore: true)
   @override
@@ -164,27 +186,31 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Constructors>? constructors) initial,
+    required TResult Function(
+            List<Constructors>? constructors, int constructorsPoints)
+        initial,
   }) {
-    return initial(constructors);
+    return initial(constructors, constructorsPoints);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Constructors>? constructors)? initial,
+    TResult? Function(List<Constructors>? constructors, int constructorsPoints)?
+        initial,
   }) {
-    return initial?.call(constructors);
+    return initial?.call(constructors, constructorsPoints);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Constructors>? constructors)? initial,
+    TResult Function(List<Constructors>? constructors, int constructorsPoints)?
+        initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(constructors);
+      return initial(constructors, constructorsPoints);
     }
     return orElse();
   }
@@ -219,11 +245,14 @@ class _$InitialImpl implements _Initial {
 }
 
 abstract class _Initial implements ConstructorState {
-  const factory _Initial({final List<Constructors>? constructors}) =
-      _$InitialImpl;
+  const factory _Initial(
+      {final List<Constructors>? constructors,
+      final int constructorsPoints}) = _$InitialImpl;
 
   @override
   List<Constructors>? get constructors;
+  @override
+  int get constructorsPoints;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
