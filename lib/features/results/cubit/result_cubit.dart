@@ -13,15 +13,21 @@ class ResultCubit extends Cubit<ResultState> {
 
   Future<void> getAllRacesResults() async {
     List<Race> raceList = [];
+    DateTime today = DateTime.now();
+    today = DateTime(today.year, today.month, today.day);
     try {
       final races = await raceRepository.allRaces();
       if (races != null) {
         for (var race in races) {
-          final raceResults = await resultRepository.raceResults(int.parse(race.round!));
-          if (raceResults != null) {
-            raceList.add(raceResults);
-          } else {
-            debugPrint("Race Result Empty");
+          DateTime date = DateTime.parse(race.date!);
+          if (date.isBefore(today) || date.isAtSameMomentAs(today)) {
+            final raceResults = await resultRepository.raceResults(int.parse(race.round!));
+            if (raceResults != null) {
+              raceList.add(raceResults);
+              debugPrint("Race Result Completed");
+            } else {
+              debugPrint("Race Result Empty");
+            }
           }
         }
         emit(state.copyWith(raceResults: raceList));
