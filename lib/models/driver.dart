@@ -186,6 +186,8 @@ class Driver {
         "https://media.formula1.com/content/dam/fom-website/drivers/A/ALEALB01_Alexander_Albon/alealb01.png.transform/2col/image.png",
     "sargeant":
         "https://media.formula1.com/content/dam/fom-website/drivers/L/LOGSAR01_Logan_Sargeant/logsar01.png.transform/2col/image.png",
+    "bearman":
+        "https://media.formula1.com/content/dam/fom-website/drivers/O/OLIBEA01_Oliver_Bearman/olibea01.png.transform/2col-retina/image.png",
   };
   static Map<String, String> driverHelmet = {
     "zhou": "https://media.formula1.com/content/dam/fom-website/manual/Helmets2024/zhou.png",
@@ -208,5 +210,7 @@ class Driver {
     "perez": "https://media.formula1.com/content/dam/fom-website/manual/Helmets2024/perez.png",
     "albon": "https://media.formula1.com/content/dam/fom-website/manual/Helmets2024/albon.png",
     "sargeant": "https://media.formula1.com/content/dam/fom-website/manual/Helmets2024/sargeant.png",
+    "bearman":
+        "https://res.cloudinary.com/prod-f2f3/c_fill,dpr_1.0,f_auto,g_auto,h_227,w_300/v1/f2/global/helmets/2024/Hlmt1k-Bearman024",
   };
 }
