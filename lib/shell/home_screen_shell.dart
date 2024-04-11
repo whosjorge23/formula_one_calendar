@@ -43,12 +43,16 @@ class _HomeScreenShellState extends State<HomeScreenShell> with TickerProviderSt
     }
   }
 
-  BottomNavigationBarItem bottomNavigationBarItem(IconData iconData, String label) {
+  BottomNavigationBarItem bottomNavigationBarItem(IconData iconData, String imageUrl, String label) {
     return BottomNavigationBarItem(
       activeIcon: Column(
         children: [
-          Icon(
-            iconData,
+          // Icon(
+          //   iconData,
+          //   color: appColors.redFerrari,
+          // ),
+          Image.asset(
+            imageUrl,
             color: appColors.redFerrari,
           ),
           const SizedBox(
@@ -63,8 +67,12 @@ class _HomeScreenShellState extends State<HomeScreenShell> with TickerProviderSt
       ),
       icon: Column(
         children: [
-          Icon(
-            iconData,
+          // Icon(
+          //   iconData,
+          //   color: appColors.greyHaas,
+          // ),
+          Image.asset(
+            imageUrl,
             color: appColors.greyHaas,
           ),
           const SizedBox(
@@ -95,22 +103,27 @@ class _HomeScreenShellState extends State<HomeScreenShell> with TickerProviderSt
             items: <BottomNavigationBarItem>[
               bottomNavigationBarItem(
                 Icons.flag_outlined,
+                "assets/icons/start.png",
                 'Races\n',
               ),
               bottomNavigationBarItem(
                 Icons.map_outlined,
+                "assets/icons/maps.png",
                 'Map\n',
               ),
               bottomNavigationBarItem(
                 Icons.drive_eta,
+                "assets/icons/formula-one.png",
                 'Teams\n',
               ),
               bottomNavigationBarItem(
                 Icons.list,
+                "assets/icons/trophy.png",
                 'Results\n',
               ),
               bottomNavigationBarItem(
                 Icons.person,
+                "assets/icons/driver.png",
                 'Credits\n',
               ),
             ],
