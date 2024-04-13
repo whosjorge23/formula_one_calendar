@@ -28,7 +28,9 @@ class ConstructorCubit extends Cubit<ConstructorState> {
         if (constructorResult == null) return;
         for (var race in constructorResult) {
           if (race.results == null) return;
-          teamPoints += (int.parse(race.results![0].points!) + int.parse(race.results![1].points!));
+          for (var result in race.results!) {
+            teamPoints += int.parse(result.points!);
+          }
         }
         emit(state.copyWith(constructorsPoints: teamPoints));
       }

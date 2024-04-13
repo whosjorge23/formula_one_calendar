@@ -4,6 +4,7 @@ import 'package:formula_one_calendar/features/results/cubit/result_cubit.dart';
 import 'package:formula_one_calendar/routes/go_router_config.dart';
 import 'package:formula_one_calendar/shared_export.dart';
 import 'package:formula_one_calendar/widgets/result_card.dart';
+import 'package:formula_one_calendar/widgets/team_card.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 
@@ -40,7 +41,7 @@ class _ResultListScreenState extends State<ResultListScreen> {
                 ],
               ),
             ),
-            body: state.raceResults != null
+            body: state.raceResults != null && state.teamsResults != null
                 ? TabBarView(
                     physics: const NeverScrollableScrollPhysics(),
                     children: [
@@ -68,11 +69,28 @@ class _ResultListScreenState extends State<ResultListScreen> {
                           );
                         },
                       ),
-                      Center(
-                        child: Text(
-                          "Teams",
-                          style: appTextStyle.getQuicksand().copyWith(color: Colors.white),
-                        ),
+                      ListView.builder(
+                        itemCount: state.teamsResults?.length,
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                            onTap: () {
+                              // context.push(ScreenPaths.resultDetails, extra: {
+                              //   'raceName': state.raceResults?[index].raceName,
+                              //   'resultDetails': state.raceResults?[index].results
+                              // });
+                            },
+                            child: TeamCard(
+                              teamColor: state.teamsResults?[index].constructors?.getConstructorColor ?? Colors.white,
+                              teamName: state.teamsResults?[index].constructors?.name ?? "-",
+                              teamNationality:
+                                  '${state.teamsResults?[index].constructors?.nationality} ${state.teamsResults?[index].constructors?.getConstructorFlag}',
+                              teamPowerUnit: '${state.teamsResults?[index].constructors?.getConstructorPowerUnit}',
+                              teamLogo: state.teamsResults![index].constructors!.getConstructorImage,
+                              teamCar: state.teamsResults![index].constructors!.getConstructorCarImage,
+                              teamDrivers: '${state.teamsResults?[index].constructorsResult}',
+                            ),
+                          );
+                        },
                       ),
                       Center(
                         child: Text(

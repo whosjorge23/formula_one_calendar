@@ -4,5 +4,6 @@ part of 'result_cubit.dart';
 class ResultState with _$ResultState {
   const factory ResultState.initial({
     List<Race>? raceResults,
+    List<TeamResult>? teamsResults,
   }) = _Initial;
 }

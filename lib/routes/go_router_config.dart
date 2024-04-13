@@ -98,7 +98,7 @@ GoRouter createGoRouter({
             pageBuilder: (context, state) {
               return NoTransitionPage(
                 child: BlocProvider(
-                  create: (context) => ResultCubit()..getAllRacesResults(),
+                  create: (context) => ResultCubit()..initData(),
                   child: ResultListScreen(),
                 ),
               );
