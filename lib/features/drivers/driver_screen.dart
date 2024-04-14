@@ -60,8 +60,7 @@ class _DriverDetailsScreenState extends State<DriverDetailsScreen> {
                         errorBuilder: (context, error, stackTrace) => Icon(Icons.error),
                       ),
                       // Display driver information
-                      Text("Number: ${state.driver!.permanentNumber} ${state.driver!.getDriverFlag ?? "-"}",
-                          style: Theme.of(context).textTheme.titleLarge),
+                      Text("Number: ${state.driver!.permanentNumber}", style: Theme.of(context).textTheme.titleLarge),
                       Text("Name: ${state.driver!.givenName} ${state.driver!.familyName} ${state.driver!.code}",
                           style: Theme.of(context).textTheme.titleLarge),
                       Text("Nationality: ${state.driver!.nationality} ${state.driver!.getDriverFlag ?? "-"}",

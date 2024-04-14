@@ -48,39 +48,6 @@ class _ConstructorsScreenState extends State<ConstructorsScreen> {
                         context.push(ScreenPaths.constructorDetails, extra: state.constructors?[index]);
                       },
                     );
-                    // return ListTile(
-                    //   title: Text(
-                    //     state.constructors?[index].name ?? "-",
-                    //     style: TextStyle(fontWeight: FontWeight.bold),
-                    //   ),
-                    //   subtitle: Column(
-                    //     crossAxisAlignment: CrossAxisAlignment.start,
-                    //     children: [
-                    //       Text(
-                    //           'Nationality: ${state.constructors?[index].nationality} ${state.constructors?[index].getConstructorFlag}'),
-                    //       Text('Power Unit: ${state.constructors?[index].getConstructorPowerUnit}'),
-                    //       Text(
-                    //           'Drivers: ${state.constructors?[index].getConstructorDrivers[0]} - ${state.constructors?[index].getConstructorDrivers[1]}'),
-                    //     ],
-                    //   ),
-                    //   trailing: SizedBox(
-                    //     width: 60,
-                    //     height: 60,
-                    //     child: Image.network(
-                    //       state.constructors![index].getConstructorImage,
-                    //       errorBuilder: (context, error, stackTrace) => Icon(Icons.image_not_supported),
-                    //     ),
-                    //   ),
-                    //   onTap: () {
-                    //     // Navigator.push(
-                    //     //   context,
-                    //     //   MaterialPageRoute(
-                    //     //     builder: (context) => ConstructorDetailsView(constructor: constructor),
-                    //     //   ),
-                    //     // );
-                    //     context.push(ScreenPaths.constructorDetails, extra: state.constructors?[index]);
-                    //   },
-                    // );
                   },
                 )
               : Center(

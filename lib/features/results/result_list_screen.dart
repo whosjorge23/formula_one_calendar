@@ -4,6 +4,7 @@ import 'package:formula_one_calendar/features/results/cubit/result_cubit.dart';
 import 'package:formula_one_calendar/routes/go_router_config.dart';
 import 'package:formula_one_calendar/shared_export.dart';
 import 'package:formula_one_calendar/widgets/result_card.dart';
+import 'package:formula_one_calendar/widgets/result_driver_card.dart';
 import 'package:formula_one_calendar/widgets/team_card.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
@@ -41,10 +42,11 @@ class _ResultListScreenState extends State<ResultListScreen> {
                 ],
               ),
             ),
-            body: state.raceResults != null && state.teamsResults != null
+            body: state.raceResults != null && state.teamsResults != null && state.driversResults != null
                 ? TabBarView(
                     physics: const NeverScrollableScrollPhysics(),
                     children: [
+                      //RACES START
                       ListView.builder(
                         itemCount: state.raceResults?.length,
                         itemBuilder: (context, index) {
@@ -69,15 +71,15 @@ class _ResultListScreenState extends State<ResultListScreen> {
                           );
                         },
                       ),
+                      //RACES END
+                      //TEAMS START
                       ListView.builder(
                         itemCount: state.teamsResults?.length,
                         itemBuilder: (context, index) {
                           return GestureDetector(
                             onTap: () {
-                              // context.push(ScreenPaths.resultDetails, extra: {
-                              //   'raceName': state.raceResults?[index].raceName,
-                              //   'resultDetails': state.raceResults?[index].results
-                              // });
+                              context.push(ScreenPaths.constructorDetails,
+                                  extra: state.teamsResults?[index].constructors);
                             },
                             child: TeamCard(
                               teamColor: state.teamsResults?[index].constructors?.getConstructorColor ?? Colors.white,
@@ -87,17 +89,37 @@ class _ResultListScreenState extends State<ResultListScreen> {
                               teamPowerUnit: '${state.teamsResults?[index].constructors?.getConstructorPowerUnit}',
                               teamLogo: state.teamsResults![index].constructors!.getConstructorImage,
                               teamCar: state.teamsResults![index].constructors!.getConstructorCarImage,
-                              teamDrivers: '${state.teamsResults?[index].constructorsResult}',
+                              teamDrivers: 'Pt. ${state.teamsResults?[index].constructorsResult}',
                             ),
                           );
                         },
                       ),
-                      Center(
-                        child: Text(
-                          "Drivers",
-                          style: appTextStyle.getQuicksand().copyWith(color: Colors.white),
-                        ),
+                      //TEAMS END
+                      //DRIVERS START
+                      ListView.builder(
+                        itemCount: state.driversResults?.length,
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                              onTap: () {
+                                context.push(ScreenPaths.driverDetails, extra: {
+                                  "selectedDriver": state.driversResults?[index].driver?.driverId,
+                                  "constructorColor": state.driversResults?[index].constructor?.getConstructorColor,
+                                });
+                              },
+                              child: ResultDriverCard(
+                                driverName:
+                                    '${state.driversResults?[index].driver?.givenName ?? "-"} ${state.driversResults?[index].driver?.familyName ?? "-"}',
+                                teamName:
+                                    '${state.driversResults?[index].driver?.code ?? "-"} ${state.driversResults?[index].driver?.permanentNumber ?? "-"} - ${state.driversResults?[index].driver?.nationality ?? "-"} ${state.driversResults?[index].driver?.getDriverFlag ?? "-"}',
+                                pointsDriver: 'Pt. ${state.driversResults?[index].driverResult ?? "-"}',
+                                driverCardPic: state.driversResults?[index].driver!.getDriverCardPic ?? "",
+                                helmetPic: state.driversResults?[index].driver!.getDriverHelmetPic ?? "",
+                                driverStatus: state.driversResults?[index].constructor?.name ?? "",
+                                circuitRound: '${index + 1}',
+                              ));
+                        },
                       ),
+                      //DRIVERS END
                     ],
                   )
                 : Center(

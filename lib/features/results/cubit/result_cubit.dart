@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:formula_one_calendar/models/constructor.dart';
+import 'package:formula_one_calendar/models/model_wrappers/driver_result.dart';
 import 'package:formula_one_calendar/models/model_wrappers/team_result.dart';
 import 'package:formula_one_calendar/models/result.dart';
 import 'package:formula_one_calendar/shared_export.dart';
@@ -17,6 +19,7 @@ class ResultCubit extends Cubit<ResultState> {
   Future<void> initData() async {
     await getAllRacesResults();
     await getAllConstructorResults();
+    await getAllDriverResults();
   }
 
   Future<void> getAllRacesResults() async {
@@ -68,6 +71,37 @@ class ResultCubit extends Cubit<ResultState> {
       teamResultArray.sort((a, b) => b.constructorsResult!.compareTo(a.constructorsResult!));
       debugPrint("${await teamResultArray}");
       emit(state.copyWith(teamsResults: teamResultArray));
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  Future<void> getAllDriverResults() async {
+    try {
+      List<DriverResult> driverResultArray = [];
+      final drivers = await driverRepository.fetchDrivers();
+      if (drivers == null) return;
+      for (var driver in drivers) {
+        int driverPoints = 0;
+        Constructors? constructor;
+        if (driver.driverId != null) {
+          final driverResult = await resultRepository.driverResults(driver.driverId!);
+          if (driverResult == null) return;
+          for (var race in driverResult) {
+            if (race.results == null) return;
+            for (var result in race.results!) {
+              driverPoints += int.parse(result.points!);
+              if (result.constructor == null) return;
+              constructor = result.constructor;
+            }
+          }
+        }
+        driverResultArray.add(DriverResult(driver: driver, constructor: constructor, driverResult: driverPoints));
+      }
+      // Sort the results by points in descending order
+      driverResultArray.sort((a, b) => b.driverResult!.compareTo(a.driverResult!));
+      debugPrint("${await driverResultArray}");
+      emit(state.copyWith(driversResults: driverResultArray));
     } catch (e) {
       debugPrint(e.toString());
     }

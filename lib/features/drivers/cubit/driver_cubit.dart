@@ -24,9 +24,9 @@ class DriverCubit extends Cubit<DriverState> {
     try {
       if (driverId != null) {
         int driverPoints = 0;
-        final constructorResult = await resultRepository.driverResults(driverId);
-        if (constructorResult == null) return;
-        for (var race in constructorResult) {
+        final driverResult = await resultRepository.driverResults(driverId);
+        if (driverResult == null) return;
+        for (var race in driverResult) {
           if (race.results == null) return;
           driverPoints += (int.parse(race.results![0].points!));
         }

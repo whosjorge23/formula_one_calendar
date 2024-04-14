@@ -5,5 +5,6 @@ class ResultState with _$ResultState {
   const factory ResultState.initial({
     List<Race>? raceResults,
     List<TeamResult>? teamsResults,
+    List<DriverResult>? driversResults,
   }) = _Initial;
 }

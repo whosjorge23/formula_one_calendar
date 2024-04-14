@@ -45,39 +45,6 @@ class ResultDetailsScreen extends StatelessWidget {
                   circuitRound: '${resultDetails?[index].position}',
                   helmetPic: resultDetails?[index].driver!.getDriverHelmetPic ?? "",
                 );
-                // return ListTile(
-                //   title: Row(
-                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //     children: [
-                //       Row(
-                //         children: [
-                //           Image.network(
-                //             resultDetails?[index].driver!.getDriverHelmetPic ?? "",
-                //             height: 30,
-                //             width: 30,
-                //           ),
-                //           Text(
-                //               "${resultDetails?[index].driver?.familyName} - ${resultDetails?[index].constructor?.name}",
-                //               style: TextStyle(fontWeight: FontWeight.bold)),
-                //         ],
-                //       ),
-                //       Text("${resultDetails?[index].position}", style: TextStyle(fontSize: 24)),
-                //     ],
-                //   ),
-                //   subtitle: Row(
-                //     crossAxisAlignment: CrossAxisAlignment.start,
-                //     children: [
-                //       Column(
-                //         crossAxisAlignment: CrossAxisAlignment.start,
-                //         children: [
-                //           Text("Status: ${resultDetails?[index].status ?? "-"}"),
-                //           // Image.network(state.raceResults?[index].results?.first.driver?.getDriverHelmetPic)
-                //         ],
-                //       ),
-                //     ],
-                //   ),
-                //   onTap: () {},
-                // );
               },
             )
           : Center(

@@ -18,22 +18,25 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ResultState {
   List<Race>? get raceResults => throw _privateConstructorUsedError;
   List<TeamResult>? get teamsResults => throw _privateConstructorUsedError;
+  List<DriverResult>? get driversResults => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            List<Race>? raceResults, List<TeamResult>? teamsResults)
+    required TResult Function(List<Race>? raceResults,
+            List<TeamResult>? teamsResults, List<DriverResult>? driversResults)
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Race>? raceResults, List<TeamResult>? teamsResults)?
+    TResult? Function(List<Race>? raceResults, List<TeamResult>? teamsResults,
+            List<DriverResult>? driversResults)?
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Race>? raceResults, List<TeamResult>? teamsResults)?
+    TResult Function(List<Race>? raceResults, List<TeamResult>? teamsResults,
+            List<DriverResult>? driversResults)?
         initial,
     required TResult orElse(),
   }) =>
@@ -66,7 +69,10 @@ abstract class $ResultStateCopyWith<$Res> {
           ResultState value, $Res Function(ResultState) then) =
       _$ResultStateCopyWithImpl<$Res, ResultState>;
   @useResult
-  $Res call({List<Race>? raceResults, List<TeamResult>? teamsResults});
+  $Res call(
+      {List<Race>? raceResults,
+      List<TeamResult>? teamsResults,
+      List<DriverResult>? driversResults});
 }
 
 /// @nodoc
@@ -84,6 +90,7 @@ class _$ResultStateCopyWithImpl<$Res, $Val extends ResultState>
   $Res call({
     Object? raceResults = freezed,
     Object? teamsResults = freezed,
+    Object? driversResults = freezed,
   }) {
     return _then(_value.copyWith(
       raceResults: freezed == raceResults
@@ -94,6 +101,10 @@ class _$ResultStateCopyWithImpl<$Res, $Val extends ResultState>
           ? _value.teamsResults
           : teamsResults // ignore: cast_nullable_to_non_nullable
               as List<TeamResult>?,
+      driversResults: freezed == driversResults
+          ? _value.driversResults
+          : driversResults // ignore: cast_nullable_to_non_nullable
+              as List<DriverResult>?,
     ) as $Val);
   }
 }
@@ -106,7 +117,10 @@ abstract class _$$InitialImplCopyWith<$Res>
       __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Race>? raceResults, List<TeamResult>? teamsResults});
+  $Res call(
+      {List<Race>? raceResults,
+      List<TeamResult>? teamsResults,
+      List<DriverResult>? driversResults});
 }
 
 /// @nodoc
@@ -122,6 +136,7 @@ class __$$InitialImplCopyWithImpl<$Res>
   $Res call({
     Object? raceResults = freezed,
     Object? teamsResults = freezed,
+    Object? driversResults = freezed,
   }) {
     return _then(_$InitialImpl(
       raceResults: freezed == raceResults
@@ -132,6 +147,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value._teamsResults
           : teamsResults // ignore: cast_nullable_to_non_nullable
               as List<TeamResult>?,
+      driversResults: freezed == driversResults
+          ? _value._driversResults
+          : driversResults // ignore: cast_nullable_to_non_nullable
+              as List<DriverResult>?,
     ));
   }
 }
@@ -140,9 +159,12 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 class _$InitialImpl implements _Initial {
   const _$InitialImpl(
-      {final List<Race>? raceResults, final List<TeamResult>? teamsResults})
+      {final List<Race>? raceResults,
+      final List<TeamResult>? teamsResults,
+      final List<DriverResult>? driversResults})
       : _raceResults = raceResults,
-        _teamsResults = teamsResults;
+        _teamsResults = teamsResults,
+        _driversResults = driversResults;
 
   final List<Race>? _raceResults;
   @override
@@ -164,9 +186,19 @@ class _$InitialImpl implements _Initial {
     return EqualUnmodifiableListView(value);
   }
 
+  final List<DriverResult>? _driversResults;
+  @override
+  List<DriverResult>? get driversResults {
+    final value = _driversResults;
+    if (value == null) return null;
+    if (_driversResults is EqualUnmodifiableListView) return _driversResults;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   String toString() {
-    return 'ResultState.initial(raceResults: $raceResults, teamsResults: $teamsResults)';
+    return 'ResultState.initial(raceResults: $raceResults, teamsResults: $teamsResults, driversResults: $driversResults)';
   }
 
   @override
@@ -177,14 +209,17 @@ class _$InitialImpl implements _Initial {
             const DeepCollectionEquality()
                 .equals(other._raceResults, _raceResults) &&
             const DeepCollectionEquality()
-                .equals(other._teamsResults, _teamsResults));
+                .equals(other._teamsResults, _teamsResults) &&
+            const DeepCollectionEquality()
+                .equals(other._driversResults, _driversResults));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_raceResults),
-      const DeepCollectionEquality().hash(_teamsResults));
+      const DeepCollectionEquality().hash(_teamsResults),
+      const DeepCollectionEquality().hash(_driversResults));
 
   @JsonKey(ignore: true)
   @override
@@ -195,31 +230,33 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            List<Race>? raceResults, List<TeamResult>? teamsResults)
+    required TResult Function(List<Race>? raceResults,
+            List<TeamResult>? teamsResults, List<DriverResult>? driversResults)
         initial,
   }) {
-    return initial(raceResults, teamsResults);
+    return initial(raceResults, teamsResults, driversResults);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Race>? raceResults, List<TeamResult>? teamsResults)?
+    TResult? Function(List<Race>? raceResults, List<TeamResult>? teamsResults,
+            List<DriverResult>? driversResults)?
         initial,
   }) {
-    return initial?.call(raceResults, teamsResults);
+    return initial?.call(raceResults, teamsResults, driversResults);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Race>? raceResults, List<TeamResult>? teamsResults)?
+    TResult Function(List<Race>? raceResults, List<TeamResult>? teamsResults,
+            List<DriverResult>? driversResults)?
         initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(raceResults, teamsResults);
+      return initial(raceResults, teamsResults, driversResults);
     }
     return orElse();
   }
@@ -256,12 +293,15 @@ class _$InitialImpl implements _Initial {
 abstract class _Initial implements ResultState {
   const factory _Initial(
       {final List<Race>? raceResults,
-      final List<TeamResult>? teamsResults}) = _$InitialImpl;
+      final List<TeamResult>? teamsResults,
+      final List<DriverResult>? driversResults}) = _$InitialImpl;
 
   @override
   List<Race>? get raceResults;
   @override
   List<TeamResult>? get teamsResults;
+  @override
+  List<DriverResult>? get driversResults;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
