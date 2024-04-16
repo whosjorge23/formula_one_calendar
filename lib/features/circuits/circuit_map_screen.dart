@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:formula_one_calendar/features/circuits/cubit/circuit_cubit.dart';
 import 'package:formula_one_calendar/models/race.dart';
+import 'package:formula_one_calendar/service/context_extension.dart';
 import 'package:formula_one_calendar/shared_export.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -173,22 +174,22 @@ class _CircuitMapScreenState extends State<CircuitMapScreen> {
                         ),
                       ),
                       Text(
-                        "First Grand Prix: ${circuit.getCircuitFirstGrandPrix}",
+                        "${context.l10n.first_grand_prix}: ${circuit.getCircuitFirstGrandPrix}",
                         style: appTextStyle.getFormulaOne().copyWith(color: appColors.white),
                       ),
                       const Gap(5),
                       Text(
-                        "Number Laps: ${circuit.getCircuitNumberLaps}",
+                        "${context.l10n.number_laps}: ${circuit.getCircuitNumberLaps}",
                         style: appTextStyle.getFormulaOne().copyWith(color: appColors.white),
                       ),
                       const Gap(5),
                       Text(
-                        "Circuit Length: ${circuit.getCircuitLength}",
+                        "${context.l10n.circuit_length}: ${circuit.getCircuitLength}",
                         style: appTextStyle.getFormulaOne().copyWith(color: appColors.white),
                       ),
                       const Gap(5),
                       Text(
-                        "Race Distance: ${circuit.getCircuitRaceDistance}",
+                        "${context.l10n.race_distance}: ${circuit.getCircuitRaceDistance}",
                         style: appTextStyle.getFormulaOne().copyWith(color: appColors.white),
                       ),
                     ],

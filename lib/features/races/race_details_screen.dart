@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:formula_one_calendar/models/race.dart';
+import 'package:formula_one_calendar/service/context_extension.dart';
 import 'package:formula_one_calendar/viewmodels/race_viewmodel.dart';
 import 'package:latlong2/latlong.dart';
 
@@ -42,15 +43,17 @@ class _RaceDetailsScreenState extends State<RaceDetailsScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Date: ${widget.race.getDateFormatted ?? "-"}',
+                  '${context.l10n.date}: ${widget.race.getDateFormatted ?? "-"}',
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
-                Text('Time: ${widget.race.getTimeGMT ?? "-"}', style: Theme.of(context).textTheme.titleLarge),
+                Text('${context.l10n.time}: ${widget.race.getTimeGMT ?? "-"}',
+                    style: Theme.of(context).textTheme.titleLarge),
               ],
             ),
-            Text('Circuit: ${widget.race.circuit?.circuitName}', style: Theme.of(context).textTheme.titleLarge),
+            Text('${context.l10n.circuit}: ${widget.race.circuit?.circuitName}',
+                style: Theme.of(context).textTheme.titleLarge),
             Text(
-                'Location: ${widget.race.circuit?.location?.locality}, ${widget.race.circuit?.location?.country} ${widget.race.circuit?.location?.getCountryFlag ?? "-"}',
+                '${context.l10n.location}: ${widget.race.circuit?.location?.locality}, ${widget.race.circuit?.location?.country} ${widget.race.circuit?.location?.getCountryFlag ?? "-"}',
                 style: Theme.of(context).textTheme.titleLarge),
             SizedBox(height: 10),
             Container(

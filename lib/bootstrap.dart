@@ -5,6 +5,7 @@ import 'package:formula_one_calendar/network/driver_repository.dart';
 import 'package:formula_one_calendar/network/race_repository.dart';
 import 'package:formula_one_calendar/network/result_repository.dart';
 import 'package:formula_one_calendar/service/context_service.dart';
+import 'package:formula_one_calendar/service/shared_preferences_service.dart';
 import 'package:formula_one_calendar/theme/app_colors.dart';
 import 'package:formula_one_calendar/theme/app_text_styles.dart';
 
@@ -22,6 +23,8 @@ void _registerSingletons() {
   final contextService = ContextService();
   // Global Context
   GetIt.I.registerSingleton<ContextService>(contextService);
+
+  GetIt.I.registerLazySingleton<SharedPreferenceService>(() => SharedPreferenceService());
 
   //NetworkClient
 

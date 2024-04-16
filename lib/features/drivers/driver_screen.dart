@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formula_one_calendar/features/drivers/cubit/driver_cubit.dart';
 import 'package:formula_one_calendar/models/driver.dart';
 import 'package:formula_one_calendar/network/driver_repository.dart';
+import 'package:formula_one_calendar/service/context_extension.dart';
 import 'package:formula_one_calendar/shared_export.dart';
 import 'package:lottie/lottie.dart';
 
@@ -60,14 +61,18 @@ class _DriverDetailsScreenState extends State<DriverDetailsScreen> {
                         errorBuilder: (context, error, stackTrace) => Icon(Icons.error),
                       ),
                       // Display driver information
-                      Text("Number: ${state.driver!.permanentNumber}", style: Theme.of(context).textTheme.titleLarge),
-                      Text("Name: ${state.driver!.givenName} ${state.driver!.familyName} ${state.driver!.code}",
+                      Text("${context.l10n.number}: ${state.driver!.permanentNumber}",
                           style: Theme.of(context).textTheme.titleLarge),
-                      Text("Nationality: ${state.driver!.nationality} ${state.driver!.getDriverFlag ?? "-"}",
+                      Text(
+                          "${context.l10n.name}: ${state.driver!.givenName} ${state.driver!.familyName} ${state.driver!.code}",
                           style: Theme.of(context).textTheme.titleLarge),
-                      Text("Date of birth: ${state.driver!.dateOfBirth}",
+                      Text(
+                          "${context.l10n.nationality}: ${state.driver!.nationality} ${state.driver!.getDriverFlag ?? "-"}",
                           style: Theme.of(context).textTheme.titleLarge),
-                      Text("Points: ${state.driverPoints}", style: Theme.of(context).textTheme.titleLarge),
+                      Text("${context.l10n.dob}: ${state.driver!.dateOfBirth}",
+                          style: Theme.of(context).textTheme.titleLarge),
+                      Text("${context.l10n.points}: ${state.driverPoints}",
+                          style: Theme.of(context).textTheme.titleLarge),
                       // Display driver helmet
                       Image.network(
                         state.driver!.getDriverHelmetPic,

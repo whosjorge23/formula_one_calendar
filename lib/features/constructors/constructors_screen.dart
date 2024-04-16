@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formula_one_calendar/features/constructors/cubit/constructor_cubit.dart';
 import 'package:formula_one_calendar/models/constructor.dart';
 import 'package:formula_one_calendar/routes/go_router_config.dart';
+import 'package:formula_one_calendar/service/context_extension.dart';
 import 'package:formula_one_calendar/shared_export.dart';
 import 'package:formula_one_calendar/views/constructor_details_view.dart';
 import 'package:formula_one_calendar/widgets/team_card.dart';
@@ -26,7 +27,7 @@ class _ConstructorsScreenState extends State<ConstructorsScreen> {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
-            title: Text('Teams List'),
+            title: Text(context.l10n.teams_list),
           ),
           body: state.constructors != null
               ? ListView.builder(

@@ -2,7 +2,7 @@
     package="com.example.formula_one_calendar">
 
     <application
-        android:label="formula_one_calendar"
+        android:label="f1_world"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

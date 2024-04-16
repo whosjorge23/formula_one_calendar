@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:formula_one_calendar/features/settings/cubit/settings_cubit.dart';
 import 'package:formula_one_calendar/routes/go_router_config.dart';
 import 'package:formula_one_calendar/shared_export.dart';
 import 'package:formula_one_calendar/theme/theme_data.dart';
@@ -33,22 +36,32 @@ class __MyAppState extends State<_MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      routerConfig: _goRouter,
-      theme: lightTheme,
-      builder: (context, child) {
-        return ScrollConfiguration(
-          behavior: DisableOverScroll(),
-          child: Stack(
-            children: [
-              _UnFocus(
-                child: child!,
-              ),
-            ],
-          ),
-        );
-      },
+    return BlocProvider(
+      create: (context) => SettingsCubit(),
+      child: BlocBuilder<SettingsCubit, SettingsState>(
+        builder: (context, state) {
+          return MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            routerConfig: _goRouter,
+            theme: lightTheme,
+            locale: state.locale,
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            builder: (context, child) {
+              return ScrollConfiguration(
+                behavior: DisableOverScroll(),
+                child: Stack(
+                  children: [
+                    _UnFocus(
+                      child: child!,
+                    ),
+                  ],
+                ),
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }

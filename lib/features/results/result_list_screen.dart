@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formula_one_calendar/features/results/cubit/result_cubit.dart';
 import 'package:formula_one_calendar/routes/go_router_config.dart';
+import 'package:formula_one_calendar/service/context_extension.dart';
 import 'package:formula_one_calendar/shared_export.dart';
 import 'package:formula_one_calendar/widgets/result_card.dart';
 import 'package:formula_one_calendar/widgets/result_driver_card.dart';
@@ -23,7 +24,7 @@ class _ResultListScreenState extends State<ResultListScreen> {
           length: 3,
           child: Scaffold(
             appBar: AppBar(
-              title: Text('Result List'),
+              title: Text(context.l10n.result_list),
               bottom: TabBar(
                 indicatorSize: TabBarIndicatorSize.tab,
                 indicator: UnderlineTabIndicator(
@@ -36,9 +37,9 @@ class _ResultListScreenState extends State<ResultListScreen> {
                 labelColor: appColors.redFerrari,
                 labelStyle: appTextStyle.getFormulaOne(),
                 tabs: [
-                  Tab(text: "Races"),
-                  Tab(text: "Teams"),
-                  Tab(text: "Drivers"),
+                  Tab(text: context.l10n.races),
+                  Tab(text: context.l10n.teams),
+                  Tab(text: context.l10n.drivers),
                 ],
               ),
             ),

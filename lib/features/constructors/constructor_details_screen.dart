@@ -7,6 +7,7 @@ import 'package:formula_one_calendar/features/constructors/cubit/constructor_cub
 import 'package:formula_one_calendar/models/constructor.dart';
 import 'package:formula_one_calendar/models/driver.dart';
 import 'package:formula_one_calendar/routes/go_router_config.dart';
+import 'package:formula_one_calendar/service/context_extension.dart';
 import 'package:go_router/go_router.dart';
 
 class ConstructorDetailsScreen extends StatefulWidget {
@@ -52,18 +53,20 @@ class ConstructorDetailsScreenState extends State<ConstructorDetailsScreen> {
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) => const Icon(Icons.error),
                   ),
-                  Text('Full Team Name: ${widget.constructor.getConstructorFullname ?? "-"}',
+                  Text('${context.l10n.full_team_name}: ${widget.constructor.getConstructorFullname ?? "-"}',
                       style: Theme.of(context).textTheme.titleLarge),
-                  Text('Nationality: ${widget.constructor.nationality} ${widget.constructor.getConstructorFlag}',
+                  Text(
+                      '${context.l10n.nationality}: ${widget.constructor.nationality} ${widget.constructor.getConstructorFlag}',
                       style: Theme.of(context).textTheme.titleLarge),
-                  Text('Base: ${widget.constructor.getConstructorBase ?? "-"}',
+                  Text('${context.l10n.base}: ${widget.constructor.getConstructorBase ?? "-"}',
                       style: Theme.of(context).textTheme.titleLarge),
-                  Text('Power Unit: ${widget.constructor.getConstructorPowerUnit}',
+                  Text('${context.l10n.power_unit}: ${widget.constructor.getConstructorPowerUnit}',
                       style: Theme.of(context).textTheme.titleLarge),
-                  Text('First Team Entry: ${widget.constructor.getConstructorEntryYear ?? "-"}',
+                  Text('${context.l10n.first_team_entry}: ${widget.constructor.getConstructorEntryYear ?? "-"}',
                       style: Theme.of(context).textTheme.titleLarge),
-                  Text('Points: ${state.constructorsPoints ?? "-"}', style: Theme.of(context).textTheme.titleLarge),
-                  Text('Drivers: ', style: Theme.of(context).textTheme.titleLarge),
+                  Text('${context.l10n.points}: ${state.constructorsPoints ?? "-"}',
+                      style: Theme.of(context).textTheme.titleLarge),
+                  Text('${context.l10n.drivers}: ', style: Theme.of(context).textTheme.titleLarge),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [

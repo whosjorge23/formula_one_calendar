@@ -13,6 +13,7 @@ import 'package:formula_one_calendar/features/races/race_list_screen.dart';
 import 'package:formula_one_calendar/features/results/cubit/result_cubit.dart';
 import 'package:formula_one_calendar/features/results/result_details_screen.dart';
 import 'package:formula_one_calendar/features/results/result_list_screen.dart';
+import 'package:formula_one_calendar/features/settings/settings_screen.dart';
 import 'package:formula_one_calendar/models/constructor.dart';
 import 'package:formula_one_calendar/models/race.dart';
 import 'package:formula_one_calendar/models/result.dart' as resultModel;
@@ -33,6 +34,7 @@ class ScreenPaths {
   static String resultList = '/resultList';
   static String resultDetails = '/resultDetails';
   static String credits = '/credits';
+  static String settings = '/settings';
 }
 
 NoTransitionPage pageBuilder(Widget widget) {
@@ -104,11 +106,19 @@ GoRouter createGoRouter({
               );
             },
           ),
+          // GoRoute(
+          //   path: ScreenPaths.credits,
+          //   pageBuilder: (context, state) {
+          //     return NoTransitionPage(
+          //       child: CreditsView(),
+          //     );
+          //   },
+          // ),
           GoRoute(
-            path: ScreenPaths.credits,
+            path: ScreenPaths.settings,
             pageBuilder: (context, state) {
-              return NoTransitionPage(
-                child: CreditsView(),
+              return const NoTransitionPage(
+                child: SettingsScreen(),
               );
             },
           ),

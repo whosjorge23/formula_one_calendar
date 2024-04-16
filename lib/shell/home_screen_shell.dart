@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formula_one_calendar/routes/go_router_config.dart';
+import 'package:formula_one_calendar/service/context_extension.dart';
 import 'package:formula_one_calendar/shared_export.dart';
 import 'package:formula_one_calendar/shell/cubit/home_screen_shell_cubit.dart';
 import 'package:go_router/go_router.dart';
@@ -38,7 +39,7 @@ class _HomeScreenShellState extends State<HomeScreenShell> with TickerProviderSt
       context.read<HomeScreenShellCubit>().updateIndex(index);
     }
     if (index == 4) {
-      context.go(ScreenPaths.credits);
+      context.go(ScreenPaths.settings);
       context.read<HomeScreenShellCubit>().updateIndex(index);
     }
   }
@@ -104,27 +105,27 @@ class _HomeScreenShellState extends State<HomeScreenShell> with TickerProviderSt
               bottomNavigationBarItem(
                 Icons.flag_outlined,
                 "assets/icons/start.png",
-                'Races\n',
+                context.l10n.races,
               ),
               bottomNavigationBarItem(
                 Icons.map_outlined,
                 "assets/icons/maps.png",
-                'Map\n',
+                context.l10n.map,
               ),
               bottomNavigationBarItem(
                 Icons.drive_eta,
                 "assets/icons/formula-one.png",
-                'Teams\n',
+                context.l10n.teams,
               ),
               bottomNavigationBarItem(
                 Icons.list,
                 "assets/icons/trophy.png",
-                'Results\n',
+                context.l10n.results,
               ),
               bottomNavigationBarItem(
                 Icons.person,
                 "assets/icons/driver.png",
-                'Credits\n',
+                context.l10n.settings,
               ),
             ],
             currentIndex: selectedIndex,
