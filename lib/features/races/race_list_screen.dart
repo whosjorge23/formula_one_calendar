@@ -38,7 +38,7 @@ class _RaceListScreenState extends State<RaceListScreen> {
                       child: CircuitCard(
                         circuitName: "${state.races?[index].raceName}",
                         circuitPlace:
-                            '${state.races?[index].circuit?.location?.locality}, ${state.races?[index].circuit?.location?.country} ${state.races?[index].circuit?.location!.getCountryFlag ?? "-"}',
+                            '${state.races?[index].circuit?.location?.locality}, ${state.races?[index].circuit?.location?.getCircuitCountryTranslated} ${state.races?[index].circuit?.location!.getCountryFlag ?? "-"}',
                         circuitTrackName: '${state.races?[index].circuit?.circuitName}',
                         trackPic: '${state.races?[index].circuit?.getCircuitPic}',
                         trackSchedule:

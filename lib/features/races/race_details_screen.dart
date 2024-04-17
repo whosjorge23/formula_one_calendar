@@ -53,7 +53,7 @@ class _RaceDetailsScreenState extends State<RaceDetailsScreen> {
             Text('${context.l10n.circuit}: ${widget.race.circuit?.circuitName}',
                 style: Theme.of(context).textTheme.titleLarge),
             Text(
-                '${context.l10n.location}: ${widget.race.circuit?.location?.locality}, ${widget.race.circuit?.location?.country} ${widget.race.circuit?.location?.getCountryFlag ?? "-"}',
+                '${context.l10n.location}: ${widget.race.circuit?.location?.locality}, ${widget.race.circuit?.location?.getCircuitCountryTranslated} ${widget.race.circuit?.location?.getCountryFlag ?? "-"}',
                 style: Theme.of(context).textTheme.titleLarge),
             SizedBox(height: 10),
             Container(

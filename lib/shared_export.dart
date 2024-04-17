@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:formula_one_calendar/network/constructor_repository.dart';
 import 'package:formula_one_calendar/network/driver_repository.dart';
 import 'package:formula_one_calendar/network/race_repository.dart';
@@ -9,6 +10,8 @@ import 'package:formula_one_calendar/theme/app_text_styles.dart';
 import 'package:get_it/get_it.dart';
 
 ContextService get contextService => GetIt.I.get<ContextService>();
+
+BuildContext get globalContext => contextService.context;
 
 RaceRepository get raceRepository => GetIt.I.get<RaceRepository>();
 

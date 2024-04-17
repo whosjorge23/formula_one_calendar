@@ -1,3 +1,5 @@
+import 'package:formula_one_calendar/service/context_extension.dart';
+import 'package:formula_one_calendar/shared_export.dart';
 import 'package:intl/intl.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -379,6 +381,8 @@ class Location {
 
   String get getCountryFlag => countryFlag[country] ?? "";
 
+  String get getCircuitCountryTranslated => circuitCountryTranslated[country] ?? "";
+
   static Map<String, String> countryFlag = {
     'Bahrain': '🇧🇭',
     'UK': '🇬🇧',
@@ -402,6 +406,33 @@ class Location {
     'Mexico': '🇲🇽',
     'Brazil': '🇧🇷',
     'UAE': '🇦🇪',
+  };
+
+  static Map<String, String> circuitCountryTranslated = {
+    "Bahrain": globalContext.l10n.bahrain,
+    "Saudi Arabia": globalContext.l10n.saudi_arabia,
+    "Australia": globalContext.l10n.australia,
+    "Azerbaijan": globalContext.l10n.azerbaijan,
+    "USA": globalContext.l10n.usa,
+    "Italy": globalContext.l10n.italy,
+    "Monaco": globalContext.l10n.monaco,
+    "Spain": globalContext.l10n.spain,
+    "Canada": globalContext.l10n.canada,
+    "Austria": globalContext.l10n.austria,
+    "UK": globalContext.l10n.uk,
+    "Hungary": globalContext.l10n.hungary,
+    "Belgium": globalContext.l10n.belgium,
+    "Netherlands": globalContext.l10n.netherlands,
+    "Italy": globalContext.l10n.italy,
+    "Singapore": globalContext.l10n.singapore,
+    "Japan": globalContext.l10n.japan,
+    "Qatar": globalContext.l10n.qatar,
+    "USA": globalContext.l10n.usa,
+    "Mexico": globalContext.l10n.mexico,
+    "Brazil": globalContext.l10n.brazil,
+    "United States": globalContext.l10n.usa,
+    "UAE": globalContext.l10n.uae,
+    "China": globalContext.l10n.china,
   };
 }
 
