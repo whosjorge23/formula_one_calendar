@@ -33,6 +33,7 @@
   "theme_system": "System",
   "theme_light": "Light",
   "theme_dark": "Dark",
+  "switzerland": "Switzerland",
   "bahrain": "Bahrain",
   "saudi_arabia": "Saudi Arabia",
   "australia": "Australia",
@@ -53,5 +54,12 @@
   "mexico": "Mexico",
   "brazil": "Brazil",
   "qatar": "Qatar",
-  "uae": "United Arab Emirates"
+  "uae": "United Arab Emirates",
+  "french": "French",
+  "italian": "Italian",
+  "american": "American",
+  "german": "German",
+  "austrian": "Austrian",
+  "swiss": "Swiss",
+  "british": "British"
   }

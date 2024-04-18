@@ -46,17 +46,17 @@ class ConstructorDetailsScreenState extends State<ConstructorDetailsScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Image.network(
-                    widget.constructor.getConstructorImageEXT,
-                    width: MediaQuery.of(context).size.width,
-                    height: 200,
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) => const Icon(Icons.error),
-                  ),
+                  // Image.network(
+                  //   widget.constructor.getConstructorImageEXT,
+                  //   width: MediaQuery.of(context).size.width,
+                  //   height: 200,
+                  //   fit: BoxFit.cover,
+                  //   errorBuilder: (context, error, stackTrace) => const Icon(Icons.error),
+                  // ),
                   Text('${context.l10n.full_team_name}: ${widget.constructor.getConstructorFullname ?? "-"}',
                       style: Theme.of(context).textTheme.titleLarge),
                   Text(
-                      '${context.l10n.nationality}: ${widget.constructor.nationality} ${widget.constructor.getConstructorFlag}',
+                      '${context.l10n.nationality}: ${widget.constructor.getConstructorNationalityTranslation} ${widget.constructor.getConstructorFlag}',
                       style: Theme.of(context).textTheme.titleLarge),
                   Text('${context.l10n.base}: ${widget.constructor.getConstructorBase ?? "-"}',
                       style: Theme.of(context).textTheme.titleLarge),

@@ -38,7 +38,7 @@ class _ConstructorsScreenState extends State<ConstructorsScreen> {
                         teamColor: state.constructors?[index].getConstructorColor ?? Colors.white,
                         teamName: state.constructors?[index].name ?? "-",
                         teamNationality:
-                            '${state.constructors?[index].nationality} ${state.constructors?[index].getConstructorFlag}',
+                            '${state.constructors?[index].getConstructorNationalityTranslation} ${state.constructors?[index].getConstructorFlag}',
                         teamPowerUnit: '${state.constructors?[index].getConstructorPowerUnit}',
                         teamLogo: state.constructors![index].getConstructorImage,
                         teamCar: state.constructors![index].getConstructorCarImage,

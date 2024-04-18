@@ -19,7 +19,7 @@
   "full_team_name": "Nome Completo della Squadra",
   "nationality": "Nazionalità",
   "base": "Base",
-  "power_unit": "Power Unit",
+  "power_unit": "Motore",
   "first_team_entry": "Primo Ingresso della Squadra",
   "points": "Punti",
   "number": "Numero",
@@ -33,6 +33,7 @@
   "theme_system": "Sistema",
   "theme_light": "Chiaro",
   "theme_dark": "Scuro",
+  "switzerland": "Svizzera",
   "bahrain": "Bahrain",
     "saudi_arabia": "Arabia Saudita",
     "australia": "Australia",
@@ -53,5 +54,12 @@
     "mexico": "Messico",
     "brazil": "Brasile",
     "qatar": "Qatar",
-    "uae": "Emirati Arabi Uniti"
+    "uae": "Emirati Arabi Uniti",
+    "french": "Francese",
+      "italian": "Italiano",
+      "american": "Americano",
+      "german": "Tedesco",
+      "austrian": "Austriaco",
+      "swiss": "Svizzero",
+      "british": "Inglese"
 }

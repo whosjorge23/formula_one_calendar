@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:formula_one_calendar/service/context_extension.dart';
 import 'package:formula_one_calendar/shared_export.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -91,6 +92,8 @@ class Constructors {
 
   String get getConstructorFlag => constructorFlag[nationality] ?? "";
 
+  String get getConstructorNationalityTranslation => constructorNationalityTranslation[nationality] ?? "";
+
   String get getConstructorImage => constructorImage[name] ?? "";
 
   String get getConstructorImageEXT => constructorImageEXT[name] ?? "";
@@ -119,6 +122,16 @@ class Constructors {
     'American': '🇺🇸',
     'Italian': '🇮🇹',
     'Austrian': '🇦🇹',
+  };
+
+  static Map<String, String> constructorNationalityTranslation = {
+    'Swiss': globalContext.l10n.swiss,
+    'British': globalContext.l10n.british,
+    'French': globalContext.l10n.french,
+    'German': globalContext.l10n.german,
+    'American': globalContext.l10n.american,
+    'Italian': globalContext.l10n.italian,
+    'Austrian': globalContext.l10n.austrian,
   };
 
   static Map<String, String> constructorImage = {
@@ -234,16 +247,16 @@ class Constructors {
   };
 
   static Map<String, String> constructorBase = {
-    'Sauber': 'Hinwil, Switzerland',
-    'RB F1 Team': 'Faenza, Italy',
-    'Alpine F1 Team': 'Enstone, United Kingdom',
-    'Aston Martin': 'Silverstone, United Kingdom',
-    'Ferrari': 'Maranello, Italy',
-    'Haas F1 Team': 'Kannapolis, United States',
-    'McLaren': 'Woking, United Kingdom',
-    'Mercedes': 'Brackley, United Kingdom',
-    'Red Bull': 'Milton Keynes, United Kingdom',
-    'Williams': 'Grove, United Kingdom',
+    'Sauber': 'Hinwil, ${globalContext.l10n.switzerland}',
+    'RB F1 Team': 'Faenza, ${globalContext.l10n.italy}',
+    'Alpine F1 Team': 'Enstone, ${globalContext.l10n.uk}',
+    'Aston Martin': 'Silverstone, ${globalContext.l10n.uk}',
+    'Ferrari': 'Maranello, ${globalContext.l10n.italy}',
+    'Haas F1 Team': 'Kannapolis, ${globalContext.l10n.usa}',
+    'McLaren': 'Woking, ${globalContext.l10n.uk}',
+    'Mercedes': 'Brackley, ${globalContext.l10n.uk}',
+    'Red Bull': 'Milton Keynes, ${globalContext.l10n.uk}',
+    'Williams': 'Grove, ${globalContext.l10n.uk}',
   };
 
   static Map<String, String> constructorEntryYear = {
