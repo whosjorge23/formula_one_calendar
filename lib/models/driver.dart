@@ -1,3 +1,5 @@
+import 'package:formula_one_calendar/service/context_extension.dart';
+import 'package:formula_one_calendar/shared_export.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'driver.g.dart';
@@ -80,6 +82,8 @@ class Driver {
 
   String get getDriverFlag => driverFlag[nationality] ?? "";
 
+  String get getDriverNationalityTranslation => driverNationalityTranslation[nationality] ?? "";
+
   String get getDriverPic => driverPic[driverId] ?? "";
 
   String get getDriverCardPic => driverPicCard[driverId] ?? "";
@@ -102,6 +106,24 @@ class Driver {
     'Canadian': '🇨🇦',
     'Japanese': '🇯🇵',
     'Chinese': '🇨🇳',
+  };
+
+  static Map<String, String> driverNationalityTranslation = {
+    'Thai': globalContext.l10n.thai,
+    'Spanish': globalContext.l10n.spanish,
+    'British': globalContext.l10n.british,
+    'French': globalContext.l10n.french,
+    'German': globalContext.l10n.german,
+    'American': globalContext.l10n.american,
+    'Finnish': globalContext.l10n.finnish,
+    'Dutch': globalContext.l10n.dutch,
+    'Monegasque': globalContext.l10n.monegasque,
+    'Danish': globalContext.l10n.danish,
+    'Mexican': globalContext.l10n.mexican,
+    'Australian': globalContext.l10n.australian,
+    'Canadian': globalContext.l10n.canadian,
+    'Japanese': globalContext.l10n.japanese,
+    'Chinese': globalContext.l10n.chinese,
   };
   static Map<String, String> driverPic = {
     "zhou":

@@ -86,7 +86,7 @@ class _ResultListScreenState extends State<ResultListScreen> {
                               teamColor: state.teamsResults?[index].constructors?.getConstructorColor ?? Colors.white,
                               teamName: state.teamsResults?[index].constructors?.name ?? "-",
                               teamNationality:
-                                  '${state.teamsResults?[index].constructors?.nationality} ${state.teamsResults?[index].constructors?.getConstructorFlag}',
+                                  '${state.teamsResults?[index].constructors?.getConstructorNationalityTranslation} ${state.teamsResults?[index].constructors?.getConstructorFlag}',
                               teamPowerUnit: '${state.teamsResults?[index].constructors?.getConstructorPowerUnit}',
                               teamLogo: state.teamsResults![index].constructors!.getConstructorImage,
                               teamCar: state.teamsResults![index].constructors!.getConstructorCarImage,
@@ -111,7 +111,7 @@ class _ResultListScreenState extends State<ResultListScreen> {
                                 driverName:
                                     '${state.driversResults?[index].driver?.givenName ?? "-"} ${state.driversResults?[index].driver?.familyName ?? "-"}',
                                 teamName:
-                                    '${state.driversResults?[index].driver?.code ?? "-"} ${state.driversResults?[index].driver?.permanentNumber ?? "-"} - ${state.driversResults?[index].driver?.nationality ?? "-"} ${state.driversResults?[index].driver?.getDriverFlag ?? "-"}',
+                                    '${state.driversResults?[index].driver?.code ?? "-"} ${state.driversResults?[index].driver?.permanentNumber ?? "-"} - ${state.driversResults?[index].driver?.getDriverNationalityTranslation ?? "-"} ${state.driversResults?[index].driver?.getDriverFlag ?? "-"}',
                                 pointsDriver: 'Pt. ${state.driversResults?[index].driverResult ?? "-"}',
                                 driverCardPic: state.driversResults?[index].driver!.getDriverCardPic ?? "",
                                 helmetPic: state.driversResults?[index].driver!.getDriverHelmetPic ?? "",

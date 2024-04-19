@@ -67,7 +67,7 @@ class _DriverDetailsScreenState extends State<DriverDetailsScreen> {
                           "${context.l10n.name}: ${state.driver!.givenName} ${state.driver!.familyName} ${state.driver!.code}",
                           style: Theme.of(context).textTheme.titleLarge),
                       Text(
-                          "${context.l10n.nationality}: ${state.driver!.nationality} ${state.driver!.getDriverFlag ?? "-"}",
+                          "${context.l10n.nationality}: ${state.driver!.getDriverNationalityTranslation} ${state.driver!.getDriverFlag ?? "-"}",
                           style: Theme.of(context).textTheme.titleLarge),
                       Text("${context.l10n.dob}: ${state.driver!.dateOfBirth}",
                           style: Theme.of(context).textTheme.titleLarge),

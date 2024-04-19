@@ -138,7 +138,8 @@ class LanguageDropdown extends StatelessWidget {
       builder: (context, state) {
         return DropdownButton<Locale>(
           dropdownColor: appColors.black,
-          iconEnabledColor: appColors.black,
+          iconEnabledColor: appColors.white,
+          iconDisabledColor: appColors.white,
           elevation: 0,
           value: state.locale,
           onChanged: (Locale? newValue) {
