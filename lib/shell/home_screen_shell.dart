@@ -62,7 +62,7 @@ class _HomeScreenShellState extends State<HomeScreenShell> with TickerProviderSt
           Text(
             label,
             textAlign: TextAlign.center,
-            style: appTextStyle.getFormulaOne().copyWith(color: appColors.redFerrari),
+            style: appTextStyle.getFormulaOne().copyWith(fontSize: 10, color: appColors.redFerrari),
           )
         ],
       ),
@@ -82,7 +82,7 @@ class _HomeScreenShellState extends State<HomeScreenShell> with TickerProviderSt
           Text(
             label,
             textAlign: TextAlign.center,
-            style: appTextStyle.getFormulaOne().copyWith(color: appColors.greyHaas),
+            style: appTextStyle.getFormulaOne().copyWith(fontSize: 10, color: appColors.greyHaas),
           )
         ],
       ),
